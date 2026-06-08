@@ -1,0 +1,13 @@
+{
+  "name": "react-design-draft",
+  "description": "Generate React design drafts (4-piece set) from content. Information-dense, visually refined, every element independently editable.",
+  "version": "3.0.0",
+  "author": {
+    "name": "TRAE SOLO"
+  },
+  "homepage": "https://github.com/EdwardWason/react-design-draft",
+  "repository": "https://github.com/EdwardWason/react-design-draft",
+  "license": "MIT-0",
+  "keywords": ["react", "design-draft", "infographic", "knowledge-card", "content-creation", "information-density"],
+  "skills": ["./"]
+}
