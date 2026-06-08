@@ -58,6 +58,18 @@ Pre-configured Layout × Style × Palette combinations for common use cases. Use
 | **cute** | 可爱、萌、卡哇伊 | grid-cards | kawaii | macaron |
 | **dark-tech** | 暗黑、科技、赛博 | dense-modules | cyberpunk-neon | dark |
 
+### Brand DNA Presets
+
+| Preset Name | Keywords / Auto-detect | Layout | Style | Palette | Font Override |
+|-------------|----------------------|--------|-------|---------|---------------|
+| **economist** | 经济学人、The Economist、economist.com | bento-grid or dense-modules | editorial-infographic | economist-red | 方正小标宋 + 汇文明朝体 |
+| **wechat** | 公众号、微信、mp.weixin.qq.com | grid-cards | minimal | wechat-green | Noto Sans SC |
+| **apple** | 苹果、Apple、apple.com | bento-grid | minimal | mono | PingFang SC |
+| **peoples-daily** | 人民日报、people.com.cn | grid-cards | corporate-memphis | peoples-red-gold | 方正小标宋 + 仿宋 |
+| **xiaohongshu** | 小红书、XHS | grid-cards | kawaii | xhs-red | Noto Sans SC |
+| **zhihu** | 知乎、zhihu.com | step-flow | minimal | cool | Noto Sans SC |
+| **github** | GitHub、github.com | dashboard | technical-schematic | dark | Monospace |
+
 ### High-Density Specials
 
 | Preset Name | Keywords | Layout | Style | Palette |
