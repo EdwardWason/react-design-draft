@@ -25,10 +25,11 @@ User Content → Step 1: Parse & Match → Step 2: Confirm & Advise → Step 3: 
 
 Read [`references/content-layout-mapping.md`](references/content-layout-mapping.md) for the three-dimension system.
 
-1. **Check keyword shortcuts** — scan user input against [`references/style-presets.md`](references/style-presets.md). If a preset keyword matches, use that as defaults.
-2. **Parse content structure** — extract: content type, key units count, density level.
-3. **Auto-select three dimensions**: Layout × Style × Palette.
-4. **Allow user override** — if user specifies any dimension explicitly, override that dimension only.
+1. **Check brand DNA** — scan content source URL and keywords against Brand DNA Registry in [`references/content-layout-mapping.md`](references/content-layout-mapping.md). If matched, apply brand visual DNA (highest priority).
+2. **Check keyword shortcuts** — scan user input against [`references/style-presets.md`](references/style-presets.md). If a preset keyword matches, use that as defaults.
+3. **Parse content structure** — extract: content type, key units count, density level.
+4. **Auto-select three dimensions**: Layout × Style × Palette.
+5. **Allow user override** — if user specifies any dimension explicitly, override that dimension only.
 
 ### Step 2: Confirm & Advise (MANDATORY)
 
