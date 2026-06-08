@@ -144,7 +144,7 @@ Modular scale (ratio 1.25): 12 → 14 → 16 → 20 → 24 → 32 → 48
 
 ## Phase 3: Color Rules
 
-### 11 Palette Schemes
+### 11 Palette Schemes + Brand DNA Palettes
 
 Each palette defines: bg-primary, bg-secondary, bg-card, text-primary, text-secondary, text-muted, accent-1 through accent-4, border.
 
@@ -162,6 +162,16 @@ Each palette defines: bg-primary, bg-secondary, bg-card, text-primary, text-seco
 | **duotone** | #0A0A0A | #FAFAFA | #FF6B35 |
 | **macaron** | #FFF5F5 | #4A4A4A | #FFB5C2, #B5DEFF, #C5E8B0, #E8C5FF |
 | **kami-parchment** | #F5F4ED | #141413 | #1B365D (ink-blue, sole accent) |
+
+#### Brand DNA Palettes (auto-applied when content source detected)
+
+| Palette | bg-primary | text-primary | Accents | Font Override | Traits |
+|---------|-----------|-------------|---------|---------------|--------|
+| **economist-red** | #FDFCFA | #1D1D1B | #E3120B (sole accent), grays: #333/#666/#999 | 方正小标宋(display) + 汇文明朝体(serif-body) | Thick rules, no radius, mobile-first |
+| **wechat-green** | #FFFFFF | #333333 | #07C160 (sole accent) | Noto Sans SC | Rounded 8px, loose spacing, 578px |
+| **peoples-red-gold** | #FFF9F0 | #1D1D1B | #DE2910, #FFDE00 | 方正小标宋 + 仿宋 | Formal, symmetrical |
+| **xhs-red** | #FFF5F5 | #333333 | #FF2442, #FFB5C2 | Noto Sans SC | Card waterfall, photo-heavy |
+| **zhihu-blue** | #FFFFFF | #1A1A1A | #0066FF | Noto Sans SC | Clean, long-form |
 
 ### Color Application Rules
 
