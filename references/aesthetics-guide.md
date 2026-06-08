@@ -1,0 +1,250 @@
+# Aesthetics Guide v2
+
+22 visual styles + 11 palettes + anti-patterns. Inspired by baoyu-skills' multi-dimension approach, adapted for React code generation.
+
+## Phase 1: Choose Style (22 options)
+
+### Professional & Clean
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 1 | **minimal** | Extreme whitespace, 2 colors, geometric sans | 1 font, 16px+ body, 48px+ headings, no borders |
+| 2 | **corporate-memphis** | Flat geometric shapes, limited palette, clean | Rounded rects, solid fills, 2-3 colors, no gradients |
+| 3 | **technical-schematic** | Blueprint lines, monospace labels, precision | Thin borders, mono font for labels, grid bg, blue/dark |
+| 4 | **ui-wireframe** | Gray-scale, component outlines, functional | Gray palette, dashed borders, placeholder blocks |
+
+### Editorial & Magazine
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 5 | **bold-editorial** | Huge type, tight leading, high contrast | 72px+ hero text, black/white + 1 accent, minimal decoration |
+| 6 | **editorial-infographic** | Data-rich, structured, magazine layout | Multi-column, pull-quotes, stat callouts, ruled lines |
+| 7 | **aged-academia** | Serif fonts, aged paper, scholarly | Serif display, warm cream bg, subtle texture, footnotes |
+
+### Hand-crafted & Artistic
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 8 | **craft-handmade** | Textured paper, stamp-like elements, warm | Warm bg, slight rotation on cards, hand-drawn borders via SVG |
+| 9 | **hand-drawn-edu** | Sketch lines, notebook feel, educational | Dashed borders, pencil-like SVG icons, lined-paper bg |
+| 10 | **storybook-watercolor** | Soft washes, dreamy, narrative | Pastel gradients, soft shadows, rounded organic shapes |
+| 11 | **chalkboard** | Dark bg, chalk-like text, classroom | Dark green/gray bg, white text with slight opacity variation |
+| 12 | **sketch-notes** | Doodle style, arrows, boxes, informal | SVG arrows, hand-drawn dividers, rotated sticky notes |
+
+### Digital & Tech
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 13 | **cyberpunk-neon** | Dark bg, neon glows, futuristic | Dark bg, text-shadow glow effects, neon accent borders |
+| 14 | **pixel-art** | Blocky, 8-bit aesthetic, retro gaming | Pixel font, block borders, no border-radius, grid-based |
+| 15 | **retro-pop-grid** | Bold color blocks, grid layout, 60s-70s pop | Thick borders, primary colors, geometric patterns |
+
+### Playful & Character
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 16 | **claymation** | 3D clay look, rounded, soft shadows | Large border-radius, soft multi-layer shadows, pastel |
+| 17 | **kawaii** | Cute, pastel, rounded, emoji-like | Extra rounded (16px+), pastel palette, cute SVG icons |
+| 18 | **origami** | Paper fold effects, geometric, precise | Diagonal CSS gradients for fold effect, sharp edges, white |
+| 19 | **lego-brick** | Blocky, interlocking, primary colors | No border-radius, thick borders, bright primary colors |
+| 20 | **pop-laboratory** | Scientific but fun, beakers, bubbles | Circular elements, gradient bubbles, lab-equipment SVGs |
+
+### Elegant & Refined
+
+| # | Style | Key Traits | CSS Implementation |
+|---|-------|-----------|-------------------|
+| 21 | **morandi-journal** | Muted sophisticated tones, artistic | Morandi color palette, serif + sans mix, generous spacing |
+| 22 | **ikea-manual** | Clean pictorial instructions, minimal text | Icon-heavy, step numbers, thin lines, no decoration |
+| 23 | **kami-editorial** | Warm parchment, ink-blue accent, serif hierarchy, restrained | Parchment bg #f5f4ed, ink-blue #1B365D only accent, serif 400/500 only, no bold, whisper shadows, en-dash bullets |
+
+## Phase 2: Typography Rules
+
+### Font Strategy: Local-First, Web-Fallback
+
+Design drafts are primarily for **local preview + screenshot export**, not web deployment. Therefore:
+
+1. **Prioritize local fonts** — better CJK rendering, no subset missing chars, instant load
+2. **Web fonts as fallback** — only when local font unavailable or deployment needed
+3. **CSS `font-family` stack** — local first, web fallback, generic last
+
+```css
+/* Example: local 汇文明朝体 → web Noto Serif SC → generic serif */
+--font-display: '汇文明朝体', 'Noto Serif SC', serif;
+```
+
+### Font Pairing System (6 Presets)
+
+Each preset = 1 display + 1 body + 1 mono. Choose based on style.
+
+| Preset | Display (标题) | Body (正文) | Mono (代码) | Vibe | Best With |
+|--------|---------------|------------|------------|------|-----------|
+| **古典书卷** | 汇文明朝体 | 楷体-GB2312 | Ubuntu Mono | 文化感、书卷气 | aged-academia, editorial-infographic, craft-handmade |
+| **瘦金风骨** | 宋徽宗瘦金体 | 汇文明朝体 | Ubuntu Mono | 极致个性、锋利 | bold-editorial, morandi-journal, brutalist-raw |
+| **官方权威** | 方正小标宋 | Noto Sans SC | Ubuntu Mono | 正式、商务 | corporate-memphis, minimal, technical-schematic |
+| **现代简约** | Source Han Serif SC Heavy | Noto Sans SC | Ubuntu Mono | 干净、现代 | minimal, editorial-infographic, ui-wireframe |
+| **手写教育** | 楷体-GB2312 | Noto Sans SC | Ubuntu Mono | 温和、亲切 | hand-drawn-edu, chalkboard, sketch-notes |
+| **创意趣味** | 不坑盒子 | Noto Sans SC | Ubuntu Mono | 个性、张扬 | kawaii, pop-laboratory, retro-pop-grid |
+| **纸墨书卷(Kami)** | 仓耳今楷02(TsangerJinKai02) | Noto Sans SC | JetBrains Mono | 克制、雅致、纸感 | kami-editorial, aged-academia, editorial-infographic, morandi-journal |
+
+### Style → Font Preset Mapping
+
+| Style | Font Preset | CSS Variables |
+|-------|-----------|---------------|
+| minimal | 现代简约 | `--font-display: 'Source Han Serif SC Heavy', 'Noto Serif SC', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| bold-editorial | 瘦金风骨 | `--font-display: '宋徽宗瘦金体', 'Noto Serif SC', serif; --font-body: '汇文明朝体', 'Noto Serif SC', serif` |
+| editorial-infographic | 古典书卷 | `--font-display: '汇文明朝体', 'Noto Serif SC', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| technical-schematic | 现代简约 | `--font-display: 'Source Han Serif SC Heavy', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| hand-drawn-edu | 手写教育 | `--font-display: '楷体-GB2312', 'KaiTi', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| craft-handmade | 古典书卷 | `--font-display: '汇文明朝体', 'Noto Serif SC', serif; --font-body: '楷体-GB2312', serif` |
+| aged-academia | 古典书卷 | `--font-display: '汇文明朝体', 'Noto Serif SC', serif; --font-body: '楷体-GB2312', serif` |
+| morandi-journal | 瘦金风骨 | `--font-display: '宋徽宗瘦金体', 'Noto Serif SC', serif; --font-body: '汇文明朝体', serif` |
+| cyberpunk-neon | 现代简约 | `--font-display: 'Source Han Serif SC Heavy', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| chalkboard | 手写教育 | `--font-display: '楷体-GB2312', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| corporate-memphis | 官方权威 | `--font-display: '方正小标宋', 'SimSun', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| kawaii | 创意趣味 | `--font-display: '不坑盒子', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| brutalist-raw | 瘦金风骨 | `--font-display: '宋徽宗瘦金体', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| storybook-watercolor | 手写教育 | `--font-display: '楷体-GB2312', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| retro-pop-grid | 创意趣味 | `--font-display: '不坑盒子', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| kami-editorial | 纸墨书卷(Kami) | `--font-display: 'TsangerJinKai02', 'Source Han Serif SC', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| ui-wireframe | 现代简约 | `--font-display: 'Source Han Serif SC Heavy', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| sketch-notes | 手写教育 | `--font-display: '楷体-GB2312', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| pixel-art | 现代简约 | `--font-display: 'Noto Sans SC', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| claymation | 创意趣味 | `--font-display: '不坑盒子', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| origami | 现代简约 | `--font-display: 'Source Han Serif SC Heavy', serif; --font-body: 'Noto Sans SC', sans-serif` |
+| lego-brick | 现代简约 | `--font-display: 'Noto Sans SC', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| pop-laboratory | 创意趣味 | `--font-display: '不坑盒子', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+| ikea-manual | 现代简约 | `--font-display: 'Noto Sans SC', sans-serif; --font-body: 'Noto Sans SC', sans-serif` |
+
+### Local Font Registry
+
+These fonts are installed on the user's machine and available for design drafts:
+
+| Font Name | CSS Name | File | Category |
+|-----------|---------|------|----------|
+| 汇文明朝体 | `'汇文明朝体'` | `汇文明朝体GBKv1.001.ttf` | Serif/明朝 — elegant, scholarly |
+| 宋徽宗瘦金体 | `'宋徽宗瘦金体'` | `宋徽宗瘦金体.ttf` | Calligraphy — extreme thin strokes, imperial |
+| 方正小标宋 | `'方正小标宋简体'` | `方正小标宋简体.TTF` | Song — official, authoritative |
+| 楷体 | `'楷体-GB2312'` | `楷体-GB2312.ttf` | Kai — handwritten, warm |
+| 仿宋 | `'仿宋－GB2312'` | `仿宋－GB2312.ttf` | Fang — classical, formal |
+| 黑体 | `'SimHei'` | `simhei.ttf` | Hei — bold, modern |
+| 不坑盒子 | `'不坑盒子'` | `不坑盒子.ttf` | Creative — playful, unique |
+| Noto Sans SC | `'Noto Sans SC'` | System | Sans — clean, universal |
+| Source Han Serif SC Heavy | `'Source Han Serif SC Heavy'` | System | Serif — elegant, powerful |
+| Ubuntu Mono | `'Ubuntu Mono'` | `UbuntuMono[wght].ttf` | Mono — code, data |
+| TsangerJinKai02 | `'TsangerJinKai02'` | User installed | Kai/Serif — elegant, restrained, Kami default Chinese font |
+
+### Font Size Scale
+
+Modular scale (ratio 1.25): 12 → 14 → 16 → 20 → 24 → 32 → 48
+
+**CJK-specific adjustments**:
+- CJK titles: use 1.1x the English size (CJK chars are visually smaller at same px)
+- CJK body: minimum 14px (12px CJK is unreadable)
+- CJK line-height: 1.7-1.8 (CJK needs more leading than Latin's 1.5)
+
+## Phase 3: Color Rules
+
+### 11 Palette Schemes
+
+Each palette defines: bg-primary, bg-secondary, bg-card, text-primary, text-secondary, text-muted, accent-1 through accent-4, border.
+
+| Palette | bg-primary | text-primary | Accents |
+|---------|-----------|-------------|---------|
+| **warm** | #FAF8F5 | #2D2418 | #E8913A, #D4583A, #5B8C5A, #3D7EA6 |
+| **elegant** | #F8F7F4 | #1A1A2E | #2D4A7A, #C9A84C, #6B5B8D, #3A6B5E |
+| **cool** | #F5F7FA | #1E293B | #3B82F6, #06B6D4, #6366F1, #8B5CF6 |
+| **dark** | #0F172A | #E2E8F0 | #22D3EE, #A78BFA, #F472B6, #34D399 |
+| **earth** | #F5F0E8 | #3D3529 | #8B6F47, #5B7B5E, #C17F59, #6B8FA3 |
+| **vivid** | #FFFFFF | #111827 | #EF4444, #F59E0B, #10B981, #3B82F6 |
+| **pastel** | #FDF4FF | #374151 | #C084FC, #F9A8D4, #93C5FD, #86EFAC |
+| **mono** | #FAFAFA | #18181B | #71717A, #A1A1AA |
+| **retro** | #F5E6D3 | #4A3728 | #C17F3E, #8B4513, #6B8E6B, #B85C38 |
+| **duotone** | #0A0A0A | #FAFAFA | #FF6B35 |
+| **macaron** | #FFF5F5 | #4A4A4A | #FFB5C2, #B5DEFF, #C5E8B0, #E8C5FF |
+| **kami-parchment** | #F5F4ED | #141413 | #1B365D (ink-blue, sole accent) |
+
+### Color Application Rules
+
+- **60-30-10 rule**: 60% background, 30% card/section, 10% accent highlights
+- **Never > 4 accent colors** in one design
+- **Dark text on light bg**: never pure #000
+- **Light text on dark bg**: never pure #FFF
+- **Accents must pass WCAG AA** contrast
+
+## Phase 4: Layout & Composition
+
+- ✅ Asymmetric over symmetric when content allows
+- ✅ Overlapping elements for depth
+- ✅ Diagonal flow for visual energy
+- ✅ Generous negative space OR controlled density (never in-between)
+- ❌ Never center everything
+- ❌ Never identical spacing everywhere
+
+## Phase 5: Motion & Interaction
+
+- **Page load**: staggered reveal (50-100ms delay between items)
+- **Hover**: subtle lift + shadow increase
+- **Scroll**: IntersectionObserver for reveals
+- **Duration**: 150ms / 250ms / 350ms
+- ❌ Never `transition: all`
+- ❌ Never animate `width`/`height`
+
+## Phase 6: Anti-Patterns (Absolute Bans)
+
+### Kami Ten Invariants (when style = kami-editorial)
+
+When using kami-editorial style, these 10 rules are absolute — think before overriding:
+
+1. Page background parchment `#f5f4ed`, **never pure white**
+2. Single accent: ink-blue `#1B365D`, **no second chromatic color**
+3. All grays warm-toned (yellow-brown undertone), **no cool blue-grays**
+4. Chinese: serif headlines, sans body. Sans only for UI labels/meta
+5. Serif weight locked at 400/500, **no synthetic bold (600/700)**
+6. Line-heights: tight headlines 1.1-1.3, dense body 1.4-1.45, reading body 1.5-1.55
+7. Chinese body letter-spacing: 0.3pt for comfortable reading
+8. Tag backgrounds must be **solid hex**, never rgba
+9. Depth via ring shadow or whisper shadow, **never hard drop shadows**
+10. **No italic** in print/PDF templates
+
+### General Anti-Patterns (all styles)
+
+### Typography Bans
+- Inter / Roboto / Arial as primary font
+- system-ui as font choice
+- All text same weight
+- Center-aligned body text at width > 600px
+
+### Color Bans
+- Purple gradient on white background
+- Blue-purple gradient hero
+- Evenly distributed rainbow colors
+- Pure white (#FFF) background
+- Pure black (#000) text
+- > 4 accent colors
+
+### Layout Bans
+- Nested rounded cards (card in card in card)
+- Identical card grid with no variation
+- Excessive box-shadow (> 2 layers)
+- Border + background + shadow on same element
+- Full-width everything
+- Hero section with gradient + centered text
+
+### Component Bans
+- Icon + emoji + badge on same line
+- Circular avatar in every card
+- Progress bar for everything
+- Tooltip on every element
+
+## Phase 7: Quality Checklist
+
+- [ ] One clear style chosen and consistently executed
+- [ ] Fonts: 1 display + 1 body + 1 mono (none are Inter/Roboto/Arial)
+- [ ] Colors: off-white bg, near-black text, 2-4 meaningful accents
+- [ ] No purple gradient on white
+- [ ] No nested rounded cards
+- [ ] Spacing follows 4px scale
+- [ ] Typography hierarchy: ≥ 3 distinct levels
+- [ ] Layout serves content
+- [ ] Every visual element carries information
+- [ ] Design would be memorable
