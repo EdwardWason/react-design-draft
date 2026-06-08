@@ -117,6 +117,42 @@ Certain user phrases auto-map to specific Layout × Style × Palette combination
 | "PPT" / "演示" | grid-cards or step-flow | corporate-memphis or bold-graphic | cool or elegant |
 | "纸墨风" / "Kami" / "雅致" / "财报" | grid-cards or bento-grid | kami-editorial | kami-parchment |
 
+## Content Source Brand DNA Matching
+
+When content originates from a recognizable brand/media, auto-detect and apply its visual DNA. This overrides the default three-dimension auto-selection.
+
+### Detection Logic
+
+```
+1. Check URL source domain (if provided)
+2. Check content for brand keywords / masthead / byline
+3. If brand matched → apply brand DNA preset (highest priority)
+4. If no brand detected → fall back to three-dimension auto-selection
+```
+
+### Brand DNA Registry
+
+| Brand | Detection Signals | Palette Override | Font Override | Layout Traits |
+|-------|------------------|-----------------|---------------|---------------|
+| **The Economist** | economist.com, "The Economist", "经济学人" | eco-red #E3120B + black/white/gray | 方正小标宋(display) + 汇文明朝体(serif-body) | Thick rules, no radius, mobile-first 640px |
+| **WeChat / 微信公众号** | mp.weixin.qq.com, "公众号", "微信" | WeChat green #07C160 + white | Noto Sans SC | Rounded cards, loose spacing, 578px content width |
+| **Apple** | apple.com, "Apple", "苹果" | Pure white + black | SF Pro / PingFang SC | Large whitespace, centered, hero image |
+| **36Kr** | 36kr.com, "36氪" | 36Kr blue + dark | Source Han Sans | Dense, compact, tech-news layout |
+| **People's Daily / 人民日报** | people.com.cn, "人民日报" | Red #DE2910 + gold #FFDE00 | 方正小标宋 + 仿宋 | Formal, symmetrical, official |
+| **Xiaohongshu / 小红书** | xiaohongshu.com, "小红书" | XHS red #FF2442 + warm bg | Noto Sans SC | Card waterfall, lifestyle, photo-heavy |
+| **Zhihu / 知乎** | zhihu.com, "知乎" | Zhihu blue #0066FF + white | Noto Sans SC | Q&A layout, long-form, clean |
+| **GitHub** | github.com, "GitHub" | Dark bg + green accent | Monospace-heavy | Code blocks, repo stats, markdown |
+| **Notion** | notion.so, "Notion" | Off-white + minimal | System UI | Block-based, clean, toggle lists |
+| **Kami / 纸墨** | tw93/kami, "Kami", "纸墨风" | kami-parchment #F5F4ED + ink-blue #1B365D | TsangerJinKai02 | Kami Ten Invariants apply |
+
+### Brand DNA Application Rules
+
+1. **Brand DNA has highest priority** — overrides keyword shortcuts and auto-selection
+2. **Only override the dimensions that brand defines** — if brand only defines palette, keep auto-selected layout and style
+3. **Always inform user** in Step 2 Confirm & Advise: "Detected content from [Brand], applied [Brand] visual DNA"
+4. **User can still override** with `--layout / --style / --palette` flags
+5. **Mobile-first for social media sources** — WeChat/Xiaohongshu content defaults to 640px max-width
+
 ## Mixed Content Strategy
 
 When content contains multiple types:
