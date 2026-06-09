@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.0] - 2026-06-09
+
+### Added
+- **3 knowledge card sub-types**: rule-card, checklist-card, cheatsheet-card
+  - rule-card: numbered rules + violation consequence (e.g., "三条铁律")
+  - checklist-card: items + severity markers (e.g., "7条安全红线")
+  - cheatsheet-card: name + example pairs, ultra-compact (e.g., "B1-B6访谈规则")
+- **3 logic visualization sub-types**: logic-chain, process-pipeline, version-timeline
+  - logic-chain: causal reasoning (A导致B导致C)
+  - process-pipeline: phase-based pipeline with input/output (Phase 0→1→2)
+  - version-timeline: iteration history (v1→v2→v3)
+- **Cover/back-cover density gate exemption**: threshold lowered to ≥6/15 (vs ≥9/15 for other types)
+  - Rationale: cover/back-cover value is brand identity, not information density
+
+### Changed
+- Version bumped from 4.1.0 to 4.2.0
+- multi-illustration.md: logic-chain template expanded into 3 distinct types with selection guide
+- multi-illustration.md: quote-card section expanded with 4 sub-type templates + selection guide
+
 ## [4.1.0] - 2026-06-09
 
 ### Added
