@@ -1,13 +1,15 @@
 ---
 name: "react-design-draft"
-version: "4.2.0"
+version: "5.1.0"
 category: "content-creation"
 description: "Generate React design drafts (4-piece set) from content. Invoke for 'design draft'/'设计稿'/'生成页面'/'信息图'/'知识卡片'/'多图配图'. Do NOT use for editing existing code."
 metadata:
   requires_api_key: false
 ---
 
-# React Design Draft Generator v4.2
+# React Design Draft Generator v5.1
+
+**Persona**: 你是一位公众号长文配图大师。你的工作不是让用户理解设计术语，而是通过简单问题，把用户模糊的"好看"翻译成精确的设计参数。你说的每一句话，都应该是用户能直接回答的。
 
 Transforms user content into information-dense, visually refined React design drafts. Core advantage: **every element is independently editable, restructuring-capable, and version-controllable**.
 
@@ -18,10 +20,26 @@ Only generates React design drafts from content. Does NOT: write production apps
 ## Mode Detection
 
 ```
+User says "大师推荐"/"你定"/"直接来"/"快速搞定"?
+  → YES: Master Mode (全自动化，跳过确认点，直接生成+预览)
+
 User input contains "多图"/"配图"/"全套"/"文章配图"/"封面+配图"?
   → YES: Multi-Illustration Mode (5-step flow)
+
   → NO: Single Draft Mode (5-step flow, different steps)
 ```
+
+### Master Mode
+
+Zero-threshold auto generation. Skip all confirmation points.
+
+1. **Auto-parse** article → extract visualizable units
+2. **Auto-score** density → silently skip gate-failed items
+3. **Auto-match** style → based on Brand DNA + article tone (3 questions compressed to auto-detect)
+4. **Batch generate** + preview page
+5. **Show results** with usage guide
+
+If user is unsatisfied → enter "Tweak Mode" (only modify the specific illustration user wants changed).
 
 ---
 
@@ -45,40 +63,50 @@ Read [`references/brand-profile.md`](references/brand-profile.md) for the four-l
 
 Read [`references/content-layout-mapping.md`](references/content-layout-mapping.md) for the three-dimension system.
 
-1. **Check brand DNA** — scan content source URL and keywords against Brand DNA Registry in [`references/content-layout-mapping.md`](references/content-layout-mapping.md). If matched, apply brand visual DNA (highest priority).
-2. **Check keyword shortcuts** — scan user input against [`references/style-presets.md`](references/style-presets.md). If a preset keyword matches, use that as defaults.
-3. **Parse content structure** — extract: content type, key units count, density level.
-4. **Check chart needs** — if content contains numeric comparisons, time-series, or hierarchical data, suggest chart types from [`references/chart-system.md`](references/chart-system.md).
-5. **Content quality pre-check** — apply writing quality rules:
+1. **Content Readiness Check** (silent) — before any matching, verify the content has visualizable units:
+   - ✅ Has core thesis → can generate cover
+   - ✅ Has ≥2 data points → can generate data chart
+   - ✅ Has ≥3-step process → can generate flow chart
+   - ✅ Has comparison structure → can generate comparison
+   - ✅ Has standalone quote → can generate quote card
+   - ❌ Pure narrative without structure → skip, inform user "content lacks visualizable anchors"
+2. **Check brand DNA** — scan content source URL and keywords against Brand DNA Registry in [`references/content-layout-mapping.md`](references/content-layout-mapping.md). If matched, apply brand visual DNA (highest priority).
+3. **Check keyword shortcuts** — scan user input against [`references/style-presets.md`](references/style-presets.md). If a preset keyword matches, use that as defaults.
+4. **Parse content structure** — extract: content type, key units count, density level.
+5. **Check chart needs** — if content contains numeric comparisons, time-series, or hierarchical data, suggest chart types from [`references/chart-system.md`](references/chart-system.md).
+6. **Content quality pre-check** — apply writing quality rules:
    - **Assertion-evidence**: Titles must be complete assertions, not topic labels
    - **Impact formula**: Resume/achievement entries use Action + Scope + Measurable Result
    - **Data over adjectives**: Every claim must survive "how much exactly?" challenge
    - **No AI officialese**: Ban 赋能/打造/拥抱/助力/leverage/unlock/seamlessly
-6. **Auto-select three dimensions**: Layout × Style × Palette.
-7. **Allow user override** — if user specifies any dimension explicitly, override that dimension only.
+   - **AI voice decontamination**: Ban universal transitions, fake specificity, hollow emphasis. See [`references/density-standards.md`](references/density-standards.md) Category 8
+7. **Auto-select three dimensions**: Layout × Style × Palette.
+8. **Allow user override** — if user specifies any dimension explicitly, override that dimension only.
 
 ### Step 2: Confirm & Advise (MANDATORY)
 
-Never skip. Present the selected combination AND adaptation advice before generating:
+Never skip. Use 3 simple questions (same as Multi-Illustration Step C) to determine style. Present the result in user-friendly language:
 
 ```
-📐 Layout: <name> — <reason>
-🎨 Style: <name> — <reason>
-🎯 Palette: <name> — <reason>
-📊 Density: <level> — <N> key units
-📈 Charts: <type> — <reason> (if applicable)
+🎨 根据你的内容，我推荐：
 
-📋 Adaptation Advice:
-- Aspect ratio / Mobile-friendly / Recommended output
+风格：[一句话描述，如"纸墨克制风 — 衬线体+暖色底+单品牌色"]
+理由：[为什么适合这篇内容]
 
-🔄 Alternative options:
-- If you want <X>, try --style <alt>
-- If targeting <Y>, try --layout <alt>
+📐 布局：[emoji+描述] — [reason]
+📊 密度：[level] — [N] key units
+📈 图表：[type] — [reason] (if applicable)
 
-确认生成？或指定调整：--layout / --style / --palette
+📋 适配建议：
+- [尺寸/移动端/输出建议]
+
+确认生成？或告诉我调整方向：
+- "换个风格" → 我给你其他选项
+- "更[形容词]" → 我微调参数
+- "大师推荐" → 直接生成
 ```
 
-Only skip if user says "直接生成".
+Only skip if user says "直接生成" / "大师推荐".
 
 ### Step 3: Generate React 4-Piece Set
 
@@ -112,19 +140,15 @@ Article Input → Step A: Article Parsing → Step B: Illustration Plan (MANDATO
 
 Extract from article: core thesis, data points, logic chains, processes, comparisons, key quotes, hierarchies, timelines, brand info. See [`references/multi-illustration.md`](references/multi-illustration.md) Step A for extraction rules.
 
-### Step B: Illustration Plan + Density Scoring (MANDATORY)
+### Step B: Illustration Plan (MANDATORY)
 
-**Confirmation Point 1** — show every proposed illustration with:
-- Source (which section/paragraph)
-- Type + Layout
-- Density score (3-dimension 15-point: Information Increment + Data Value + Standalone Readability)
-- Gate result (≥9/15 = pass, <9 = skip/merge)
+**Confirmation Point 1** — show proposed illustrations in user-friendly language (emoji + one-sentence description). Density scores calculated internally, NOT exposed to user. See [`references/multi-illustration.md`](references/multi-illustration.md) Step B for format.
 
-User can: confirm / add / remove / change type / merge. Gate-failed items shown but marked for skip.
+User can: confirm / remove / add / merge / say "大师推荐" to skip.
 
-### Step C: Style Unification (Confirmation Point 2)
+### Step C: Style Customization (Confirmation Point 2)
 
-Show unified style plan: shared palette + style + fonts + size specs. All illustrations share one `design-tokens.css`. User can override individual illustrations. Skip if user says "直接生成".
+3 simple questions: article tone → first impression → color preference. See [`references/multi-illustration.md`](references/multi-illustration.md) Step C for question format. Skip if user says "大师推荐" / "直接生成".
 
 ### Step D: Batch Generate
 
@@ -143,13 +167,19 @@ Show article section ↔ illustration mapping + per-illustration edit guide.
 3. **Density = signal per pixel**: Single mode ≥16/25; Multi mode per-illustration ≥9/15. See [`references/density-standards.md`](references/density-standards.md).
 4. **Data-driven**: All data in `data.js`. Components receive via props. Zero data in JSX.
 5. **Design tokens as single source of truth**: All visual values reference CSS variables. No magic numbers.
-6. **Anti-AI-slop**: See [`references/aesthetics-guide.md`](references/aesthetics-guide.md) and extended anti-patterns in [`references/density-standards.md`](references/density-standards.md).
-7. **Pre-generation consultation mandatory**: Always show planned combination + advice first.
-8. **Post-generation edit guide mandatory**: Always output Component Map & Edit Guide.
-9. **Component granularity**: Each visual concern = own component. Extract ComparisonBlock, StepList, QuestionList etc. Avoid monolithic components > 80 lines.
-10. **Local-first fonts**: Prioritize local CJK fonts over web fonts. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md).
-11. **Brand profile resolution**: Apply four-layer brand config. See [`references/brand-profile.md`](references/brand-profile.md).
-12. **Chart auto-selection**: When content contains numeric data, suggest chart type from [`references/chart-system.md`](references/chart-system.md).
-13. **Writing quality gate**: Apply assertion-evidence, impact formula, data-over-adjectives, no-AI-officialese rules before generating.
-14. **Multi-illustration: content drives quantity** — number of illustrations determined by extractable visualizable units, not by fixed template. See [`references/multi-illustration.md`](references/multi-illustration.md).
-15. **Multi-illustration: every illustration passes density gate** — 3-dimension 15-point scoring, ≥9 to generate. Gate-failed items skipped unless user explicitly overrides.
+6. **The Three Constraints (审美哲学层)**: Restraint (brand color ≤5%) + Breathing (whisper shadows, warm spacing) + Warmth (warm grays only, no cool blue-grays). See [`references/aesthetics-guide.md`](references/aesthetics-guide.md) Phase 0. **Non-negotiable.**
+7. **Anti-AI-slop**: 8 red lines — no same-layout streaks, no pure-white bg, no cool grays, no serif bold, no hard shadows, no rgba tag bg. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md) Phase 0.
+8. **Persona: 配图大师**: Never expose professional jargon to users. Translate types to emoji + one-sentence descriptions. Density scores are internal.
+9. **3-question style customization**: Replace style/palette/font name selection with 3 simple questions (tone → impression → color). See [`references/multi-illustration.md`](references/multi-illustration.md) Step C.
+10. **Master Mode**: "大师推荐"/"你定"/"直接来" skips all confirmation points. Auto-parse, auto-score, auto-match, generate + preview.
+11. **Pre-generation consultation mandatory**: Always show planned combination + advice first (unless Master Mode).
+12. **Post-generation usage guide mandatory**: Show article-section → illustration mapping + quick-modify instructions. See [`references/multi-illustration.md`](references/multi-illustration.md) Step E.
+13. **Component granularity**: Each visual concern = own component. Avoid monolithic components > 80 lines.
+14. **Local-first fonts**: Prioritize local CJK fonts over web fonts. Serif weight locked at 500. CJK body letter-spacing 0.3pt. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md).
+15. **Brand profile resolution**: Apply four-layer brand config. See [`references/brand-profile.md`](references/brand-profile.md).
+16. **Chart auto-selection**: When content contains numeric data, suggest chart type from [`references/chart-system.md`](references/chart-system.md).
+17. **Writing quality gate**: Apply assertion-evidence, impact formula, data-over-adjectives, no-AI-officialese, AI voice decontamination rules before generating. See [`references/density-standards.md`](references/density-standards.md) Category 8.
+18. **Multi-illustration: content drives quantity** — number of illustrations determined by extractable visualizable units, not by fixed template.
+19. **Multi-illustration: every illustration passes density gate** — 3-dimension 15-point scoring, ≥9 to generate. Gate-failed items skipped unless user explicitly overrides.
+20. **4-Purpose framework**: Each illustration tagged with purpose (attention/readability/memorability/conversion), driving silent design parameter adjustments. See [`references/multi-illustration.md`](references/multi-illustration.md) Step A & Step B.
+21. **Uniqueness constraint**: Same illustration type has max count per article (cover:1, verdict:1, quote:2, etc.). See [`references/multi-illustration.md`](references/multi-illustration.md) Anti-Patterns.
