@@ -2,7 +2,7 @@
 
 > 从内容生成信息密度高、审美在线的 React 设计稿四件套
 
-[![版本](https://img.shields.io/badge/version-4.0.0-blue)](https://github.com/EdwardWason/react-design-draft)
+[![版本](https://img.shields.io/badge/version-5.1.0-blue)](https://github.com/EdwardWason/react-design-draft)
 [![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-react--design--draft-orange)](https://clawhub.ai/skills/react-design-draft)
 
