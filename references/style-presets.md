@@ -58,6 +58,18 @@ Pre-configured Layout × Style × Palette combinations for common use cases. Use
 | **cute** | 可爱、萌、卡哇伊 | grid-cards | kawaii | macaron |
 | **dark-tech** | 暗黑、科技、赛博 | dense-modules | cyberpunk-neon | dark |
 
+### Multi-Illustration Templates
+
+| Preset Name | Keywords | Layout | Style | Palette | Size | Usage |
+|-------------|----------|--------|-------|---------|------|-------|
+| **cover** | 封面、头图、cover | hero-center | editorial-infographic | auto-match | 900×383 | 文章封面 |
+| **back-cover** | 封底、尾图、back-cover | center-stack | minimal | auto-match | 900×383 | 文章结尾品牌收尾 |
+| **quote-card** | 金句、引述、quote | single-focus | editorial-infographic | auto-match | 640×640 | 关键引述高亮 |
+| **section-divider** | 章节分隔、divider | hero-center | minimal | auto-match | 640×200 | 长文章节节奏 |
+| **logic-chain** | 论证链、因果链、逻辑 | flow-chart | editorial-infographic | auto-match | 640px wide | 论证结构可视化 |
+
+Note: `auto-match` means palette/style inherited from the article's unified style (Step C).
+
 ### Brand DNA Presets
 
 | Preset Name | Keywords / Auto-detect | Layout | Style | Palette | Font Override |
