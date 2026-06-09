@@ -29,18 +29,28 @@ Step E: Illustration Map
 
 Read the full article and extract:
 
-| Extract | What to Look For | Illustration Type |
-|---------|-----------------|-------------------|
-| **Core thesis** | The one-sentence argument | cover |
-| **Data points** | 3+ related numbers, percentages, trends | data chart (bar/line/donut) |
-| **Logic chains** | Causal/sequential/conditional reasoning | logic-chain, flow-chart |
-| **Processes** | 3+ sequential steps | flow-chart, swimlane |
-| **Comparisons** | A vs B with 3+ attributes each | versus, comparison |
-| **Key quotes** | Statements impactful outside context | quote-card |
-| **Hierarchies** | Nested/categorical structures | tree-chart, layered-diagram |
-| **Timelines** | Chronological milestones | timeline |
-| **Supply/demand** | Gap/shortage narratives | bar-chart, waterfall |
-| **Brand info** | Author name, publication, QR code | back-cover |
+| Extract | What to Look For | Illustration Type | Purpose |
+|---------|-----------------|-------------------|---------|
+| **Core thesis** | The one-sentence argument | cover | attention |
+| **Data points** | 3+ related numbers, percentages, trends | data chart (bar/line/donut) | readability |
+| **Logic chains** | Causal/sequential/conditional reasoning | logic-chain, flow-chart | readability |
+| **Processes** | 3+ sequential steps | flow-chart, swimlane | readability |
+| **Comparisons** | A vs B with 3+ attributes each | versus, comparison | readability |
+| **Key quotes** | Statements impactful outside context | quote-card | memorability |
+| **Core judgment** | Author's definitive stance/verdict | verdict-card | memorability |
+| **Myth vs fact** | Misconceptions to correct | myth-fact-card | memorability |
+| **Audience signal** | "适合谁/不适合谁" content | audience-fit-card | attention |
+| **Brand manifesto** | Value statements, declarations | manifesto-card | memorability |
+| **Hierarchies** | Nested/categorical structures | tree-chart, layered-diagram | readability |
+| **Timelines** | Chronological milestones | timeline | readability |
+| **Supply/demand** | Gap/shortage narratives | bar-chart, waterfall | readability |
+| **Cases/testimonials** | Real examples with outcomes | cases-card | memorability |
+| **Definitions** | Technical terms needing explanation | definition-card | readability |
+| **Action items** | CTA, subscribe, follow guidance | cta-card, subscribe-card | conversion |
+| **Brand info** | Author name, publication, QR code | back-cover | conversion |
+| **Chapter transitions** | Between-section bridges | bridge-card, section-divider | readability |
+| **Series context** | "第N篇，共M篇" | series-card | attention |
+| **Alerts/notices** | Important warnings, policy changes | notice-card, callout-card | attention |
 
 ### Extraction Rules
 
@@ -49,81 +59,151 @@ Read the full article and extract:
 - Narrative paragraphs without data/structure/quotes are NOT visualizable
 - When two units share the same source section and overlap in content, **merge** them
 
-## Step B: Illustration Plan + Density Scoring (Confirmation Point 1 - MANDATORY)
+## Step B: Illustration Plan (Confirmation Point 1 - MANDATORY)
 
-### Density Scoring for Individual Illustrations
+**Persona rule**: Never show professional jargon to the user. Translate all type names into emoji + one-sentence descriptions. Density scores are calculated internally but NOT exposed to the user.
+
+### Internal: Density Scoring (Silent)
 
 Each proposed illustration is scored on 3 dimensions (5 points each, 15 total):
 
-| Dimension | 1 | 2 | 3 | 4 | 5 |
-|-----------|---|---|---|---|---|
-| **Information Increment** | Pure decoration, text already clear | Minor reorganization | Reorganizes info for easier understanding | Reveals hidden patterns | Reveals relationships/structures invisible in text |
-| **Data Value** | No data | 1 data point | 2-3 data points | 4+ data points | 4+ data points + reveals relationships between them |
-| **Standalone Readability** | Fully depends on context | Needs section context | Needs title + subtitle | Needs title only | Self-explanatory |
+| Dimension | 1 | 3 | 5 |
+|-----------|---|---|---|
+| **Information Increment** | Pure decoration | Reorganizes for clarity | Reveals invisible structures |
+| **Data Value** | No data | 2-3 data points | 4+ data points + relationships |
+| **Standalone Readability** | Fully context-dependent | Needs title only | Self-explanatory |
 
-**Gate threshold: ≥9/15.** Below 9 = skip or merge.
+**Gate threshold: ≥9/15.** Below 9 = skip or merge. Cover/back-cover exemption: ≥6/15.
 
-**Exemption**: `cover` and `back-cover` types have a lower threshold of **≥6/15**. Rationale: cover/back-cover core value is brand identity and visual impact, not information density. However, a cover with no brand information and no thesis statement (<6) still fails.
+### User-Facing Output Format (MANDATORY)
 
-### Output Format
-
-```
-📋 配图方案：共 N 张（基于内容分析，非固定数量）
-
-┌─────────────────────────────────────────────────────┐
-│ #1 [Title]                                           │
-│ 来源：[section/paragraph reference]                   │
-│ 类型：[type] · [layout]                              │
-│ 密度评分：[X]/15（信息[A] + 数据[B] + 独立[C]）      │
-│ 内容：[what this illustration shows]                  │
-│ ✅ 通过门控 / ❌ 未通过门控（建议跳过/合并）         │
-├─────────────────────────────────────────────────────┤
-│ #2 ...                                               │
-└─────────────────────────────────────────────────────┘
-
-📊 方案统计：
-- 通过门控：X张 ✅
-- 未通过门控：Y张 ❌（已标记跳过）
-- 可合并：Z张 ⚠️（[merge suggestion]）
-
-操作：
-- "确认" → 按方案生成
-- "加上第N张" → 覆盖门控，强制生成
-- "去掉第N张" → 从方案中移除
-- "第N张换成[类型]" → 调整配图类型
-- "合并第M和第N张" → 合并为一张
-```
-
-### User Override Rules
-
-- User can **add** any illustration (override gate) — but must explicitly request it
-- User can **remove** any illustration — no justification needed
-- User can **change type** of any illustration — e.g., "第3张换成流程图"
-- User can **merge** illustrations — e.g., "合并第5和第6张"
-- Gate-failed illustrations are **shown but marked for skip** — user decides, not the system
-
-## Step C: Style Unification (Confirmation Point 2)
-
-After confirming WHAT to illustrate, confirm HOW to illustrate.
-
-### Output Format
+Present the plan in natural language, NOT technical terms:
 
 ```
-🎨 风格方案：全文统一
+📋 配图方案：共 N 张
 
-📐 风格：[style] — [reason]
-🎯 配色：[palette] — [reason]
-🔤 字体：[display] + [body]
-📏 尺寸规范：
-  - 封面：900×383（公众号封面 2.35:1）
-  - 正文配图：640px 宽（公众号正文区）
-  - 金句图：640×640（1:1）
-  - 封底：900×383
+我帮你从文章中提取了这些值得做配图的内容亮点：
 
-所有配图共享同一 design-tokens.css，确保风格一致。
+┌──────────────────────────────────────────────────┐
+│ #1 📷 封面                                        │
+│ [文章核心论点/标题]                                 │
+│                                                    │
+│ #2 [emoji] [一句话描述]                            │
+│ [具体内容亮点，用户能看懂的语言]                     │
+│                                                    │
+│ #3 ...                                             │
+└──────────────────────────────────────────────────┘
 
-确认风格？或调整：--style / --palette
+💡 我的建议：
+- [主动给出精简/丰富/合并的具体建议]
+- [指出哪几张可以合并，哪张信息密度最高]
+
+你想怎么调整？（也可以直接说"确认"）
 ```
+
+### Emoji + Description Mapping (Internal → User-Facing)
+
+| Internal Type | Emoji | User-Facing Description |
+|---------------|-------|------------------------|
+| cover | 📷 | 封面 |
+| back-cover | 📷 | 封底 |
+| quote-card | 💬 | 金句图 |
+| verdict-card | ⚖️ | 最终判断卡 |
+| myth-fact-card | 🔍 | 认知纠偏卡 |
+| audience-fit-card | 👥 | 读者匹配卡 |
+| manifesto-card | 🏴 | 宣言卡 |
+| bridge-card | 🌉 | 转场卡 |
+| callout-card | 📢 | 提示框 |
+| definition-card | 📖 | 术语定义卡 |
+| cases-card | 🏆 | 案例卡 |
+| notice-card | 🚨 | 重要通知卡 |
+| series-card | 📚 | 系列说明卡 |
+| subscribe-card | 🔔 | 关注引导卡 |
+| rule-card | ⚡ | 铁律/规则卡片 |
+| checklist-card | 🛡️ | 检查清单 |
+| cheatsheet-card | 🎯 | 速查表 |
+| logic-chain | 💡 | 论证链 |
+| process-pipeline | 🔧 | 流程管道 |
+| version-timeline | 📈 | 版本演进线 |
+| bar-chart | 📊 | 数据对比图 |
+| donut-chart | 🍩 | 份额占比图 |
+| waterfall | 💰 | 投资结构图 |
+| section-divider | ➖ | 章节分隔图 |
+
+### Purpose-Based Design Adjustments (Internal)
+
+Each illustration's `purpose` (from Step A) adjusts design parameters silently:
+
+| Purpose | Visual Tendency | Token Overrides |
+|---------|----------------|-----------------|
+| **attention** | High contrast, large type, brand color prominent, generous whitespace | `--text-hero` +20%, `--color-accent-1` saturation +15%, `--space-12` for padding |
+| **readability** | Clear hierarchy, structured layout, comfortable spacing | Default tokens, `--leading-relaxed` for body, `--space-6` gaps |
+| **memorability** | Single focus, quote magnified, visual anchor, minimal noise | `--text-hero` +30%, reduce to 1 accent color, `--space-16` around focal point |
+| **conversion** | CTA prominent, brand info complete, action guidance | `--color-accent-1` for CTA, `--radius-md` for buttons, brand logo area |
+
+**Rule**: Purpose adjusts tokens within the same shared design-tokens.css. Never create a separate token file per purpose.
+
+### User Override (Natural Language)
+
+User can say:
+- "确认" → proceed with plan
+- "去掉第N张" → remove
+- "加上[描述]" → add (override gate)
+- "第N张换成[描述]" → change type
+- "合并第M和第N张" → merge
+- "大师推荐" → auto-decide, skip this confirmation point
+
+### Master Mode Shortcut
+
+If user said "大师推荐"/"你定"/"直接来" at Mode Detection:
+- Skip Step B output entirely
+- Auto-select all gate-passed illustrations
+- Auto-merge overlapping items
+- Proceed directly to Step C (or skip Step C too if Master Mode)
+
+## Step C: Style Customization (Confirmation Point 2)
+
+**Persona rule**: Never ask users to choose from style/palette/font names. Use 3 simple questions instead. Every option must explain what it MEANS, not what it IS.
+
+### The 3 Questions (User-Facing)
+
+```
+🎨 风格定制（3个问题帮你定调）
+
+问题1：你的文章调性是？
+  A. 严肃深度（像经济学人、财新）  → 纸墨克制风：衬线体 + 暖色底 + 单品牌色
+  B. 专业理性（像36氪、极客公园）  → 科技蓝调风：无衬线 + 冷色底 + 数据突出
+  C. 温暖人文（像人物、GQ报道）    → 暖色编辑风：衬线+无衬线混搭 + 暖棕底
+  D. 活泼有趣（像差评、半佛仙人）  → 大胆撞色风：高对比 + 强调色 + 粗体
+
+问题2：读者第一眼应该感受到什么？
+  A. "这文章有分量"  → 加重衬线体 + 深色标题 + 大字封面
+  B. "这数据很硬"    → 加粗数字 + 图表突出 + 数据标签
+  C. "这观点很犀利"  → 金句放大 + 高对比 + 红色强调
+  D. "这方法很实用"  → 结构清晰 + 步骤感强 + 编号突出
+
+问题3：配色偏好？
+  A. 跟着文章来源走（微信绿/经济学人红/知乎蓝...）→ 自动检测品牌DNA
+  B. 我有指定色系：______
+  C. 你来定，高级就行  → 默认克制风（单品牌色 + 暖灰层级）
+
+---
+💡 快捷方式：
+- "大师推荐" → 跳过3个问题，我根据文章自动判断
+- "和上次一样" → 读取上次风格配置
+```
+
+### Answer → Style Mapping (Internal)
+
+| Q1 Answer | Q2 Answer | Q3 Answer | Internal Style | Internal Palette | Font Preset |
+|-----------|-----------|-----------|---------------|-----------------|-------------|
+| A (严肃深度) | any | any | kami-editorial | ink-blue / brand-DNA | kami-serif |
+| B (专业理性) | any | any | modern-tech | tech-blue | tech-sans |
+| C (温暖人文) | any | any | morandi-journal | warm-earth | editorial-mix |
+| D (活泼有趣) | any | any | bold-editorial | vivid | bold-display |
+
+Q2 fine-tunes: A→heavier headings, B→larger numbers, C→bigger quotes, D→stronger structure
+Q3 overrides palette: A→brand-DNA auto-detect, B→user custom, C→default restrained
 
 ### Style Consistency Rules
 
@@ -134,8 +214,8 @@ After confirming WHAT to illustrate, confirm HOW to illustrate.
 
 ### Skip Conditions
 
-- User says "直接生成" → skip Step C, auto-match style from content analysis
-- User says "快速搞定" → skip both Step B and Step C (but density gate still applies silently)
+- User says "直接生成" / "大师推荐" → skip Step C, auto-match style from content analysis
+- User says "快速搞定" → skip both Step B and Step C (density gate still applies silently)
 
 ## Step D: Batch Generation
 
@@ -182,28 +262,44 @@ After confirming WHAT to illustrate, confirm HOW to illustrate.
 | 章节分隔 (divider) | 640px | 200px | ~3:1 | 章节间 |
 | 封底 (back-cover) | 900px | 383px | 2.35:1 | 文章结尾 |
 
-## Step E: Illustration Map
+## Step E: Usage Guide
 
-After generation, output the article ↔ illustration mapping:
+**Persona rule**: Don't show technical file trees. Show users WHERE to put each illustration in their article, and HOW to quickly modify anything they don't like.
+
+### User-Facing Output Format
 
 ```
-🗺️ 配图地图
+🗺️ 配图使用指南
 
-§1 导言 ─────────── 🖼️ 01-cover（封面）
-§1 48天翻倍 ─────── 📊 02-timeline（里程碑时间线）
-§2 Token经济学 ──── 🔗 03-logic-chain（论证链）
-§2 内存墙 ───────── 📊 04-data-chart（HBM占比柱状图）
-§3 内存更难造 ───── 🍩 05-donut（DRAM三巨头份额）
-§4 供给紧张 ─────── 📊 06-bar-chart（HBM供需缺口）
-§5 2000亿投资 ───── 📊 07-waterfall（投资+回购结构）
-§6 个人故事 ─────── 💬 08-quote-card（金句：四个儿子）
-全文 ────────────── 🖼️ 09-back-cover（封底）
+你的文章配图已经准备好了！以下是每张图在文章中的建议位置：
 
-📝 编辑指南：
+§1 [章节名] ──── 📷 #1 封面（设为公众号封面图）
+§2 [章节名] ──── [emoji] #2 [描述]（插在[具体位置建议]）
+§3 [章节名] ──── [emoji] #3 [描述]（插在[具体位置建议]）
+...
+§N 结尾 ──────── 📷 #N 封底（文章末尾，引导关注）
+
+📝 快速修改（告诉我就行）：
+- "第N张颜色太深" → 我帮你调
+- "第N张加个[元素]" → 我帮你加
+- "全部换个风格" → 我重新生成
+- "导出图片" → 我帮你截图保存
+
+🔧 技术编辑（如需精细调整）：
 - 修改数据 → 改对应目录的 data.js
 - 修改配色 → 改 shared/design-tokens.css（全局生效）
 - 修改单张风格 → 在该目录新建 local-tokens.css 覆盖
 - 调整顺序 → 重命名目录编号
+```
+
+### Master Mode Addition
+
+In Master Mode, after showing the usage guide, also ask:
+
+```
+对结果满意吗？不满意可以告诉我：
+- "第N张改一下" → 进入微调模式
+- "重新来" → 回到 Step B 重新规划
 ```
 
 ## Illustration Type Templates
@@ -340,6 +436,150 @@ After generation, output the article ↔ illustration mapping:
 | "v1→v2→v3" or "2023→2024→2025" | version-timeline | Version numbers or dates as nodes |
 | "步骤1 → 步骤2 → 步骤3" | flow-chart (from chart-system.md) | Sequential steps without causal claim |
 
+### Verdict Card (最终判断卡)
+
+```jsx
+// Layout: single-focus
+// Content: core judgment + supporting reasoning + applicability note
+// Size: 640px wide
+// Density: medium (one judgment, maximum clarity)
+// Purpose: memorability
+// Required data: { eyebrow, title, body, note? }
+// Gate rule: must have a clear, debatable judgment (not a fact)
+// When to use: "最终判断"/"核心结论"/"我的判断" type content
+```
+
+### Audience Fit Card (读者匹配卡)
+
+```jsx
+// Layout: split-comparison (fit vs not-fit)
+// Content: who should read + who should NOT read
+// Size: 640px wide
+// Density: medium (helps reader decide quickly)
+// Purpose: attention
+// Required data: { title, fit: string[], notFit: string[] }
+// Gate rule: must have ≥1 fit AND ≥1 not-fit item
+// When to use: "适合谁"/"不适合谁"/"写给谁看" type content
+```
+
+### Myth-Fact Card (认知纠偏卡)
+
+```jsx
+// Layout: binary-comparison (myth vs fact pairs)
+// Content: misconception + correction pairs
+// Size: 640px wide
+// Density: high (corrects wrong beliefs efficiently)
+// Purpose: memorability
+// Required data: { title, pairs: [{ myth, fact }] }
+// Gate rule: must have ≥2 myth-fact pairs
+// When to use: "误区"/"真相"/"你可能以为...其实" type content
+```
+
+### Manifesto Card (宣言卡)
+
+```jsx
+// Layout: hero-center with emphasis
+// Content: brand declaration / value statement
+// Size: 640px wide
+// Density: low (emotional impact > information)
+// Purpose: memorability
+// Required data: { eyebrow, title }
+// Gate rule: title must be a complete assertion, not a topic label
+// When to use: "我们相信"/"我的立场"/"宣言" type content
+```
+
+### Bridge Card (转场卡)
+
+```jsx
+// Layout: hero-center (lightweight)
+// Content: "from → to" transition between sections
+// Size: 640×200
+// Density: minimal (navigation > information)
+// Purpose: readability
+// Required data: { from, to }
+// Gate rule: only for articles with 4+ sections
+// When to use: chapter transitions, "看完了X，接下来看Y"
+```
+
+### Callout Card (提示框)
+
+```jsx
+// Layout: inline-block with type-based styling
+// Content: tip / warning / info / success / danger message
+// Size: 640px wide
+// Density: low (single message, high visibility)
+// Purpose: attention
+// Required data: { type: 'info'|'tip'|'warning'|'success'|'danger', text }
+// Gate rule: text must be actionable (not just decorative)
+// When to use: "注意"/"小技巧"/"警告"/"重要" type content
+// Visual: info=blue, tip=green, warning=amber, success=green, danger=red
+```
+
+### Definition Card (术语定义卡)
+
+```jsx
+// Layout: inline-block with term highlight
+// Content: term + definition + optional label
+// Size: 640px wide (compact)
+// Density: medium (explains jargon efficiently)
+// Purpose: readability
+// Required data: { term, definition, label? }
+// Gate rule: term must be non-obvious to target audience
+// When to use: "OKR"/"RAG"/"微服务" type jargon that needs explanation
+```
+
+### Cases Card (案例卡)
+
+```jsx
+// Layout: grid-cards (2-4 columns)
+// Content: case name + industry + outcome per case
+// Size: 640px wide
+// Density: high (evidence compression)
+// Purpose: memorability
+// Required data: { title, cases: [{ name, industry, outcome }] }
+// Gate rule: must have ≥2 cases with quantifiable outcomes
+// When to use: "使用案例"/"客户背书"/"实战效果" type content
+```
+
+### Notice Card (重要通知卡)
+
+```jsx
+// Layout: single-focus with alert styling
+// Content: urgent title + body explanation
+// Size: 640px wide
+// Density: low (urgency > information)
+// Purpose: attention
+// Required data: { title, body }
+// Gate rule: must be genuinely time-sensitive or policy-critical
+// When to use: "重要提醒"/"政策变更"/"限时活动" type content
+```
+
+### Series Card (系列说明卡)
+
+```jsx
+// Layout: hero-center (lightweight)
+// Content: series name + episode position + topic
+// Size: 640px wide
+// Density: low (context > information)
+// Purpose: attention
+// Required data: { name, episode, topic }
+// Gate rule: only for articles that are part of a series
+// When to use: "第N篇，共M篇"/"XX系列" type content
+```
+
+### Subscribe Card (关注引导卡)
+
+```jsx
+// Layout: center-stack with CTA
+// Content: publication name + value proposition + QR placeholder
+// Size: 640px wide
+// Density: low (conversion > information)
+// Purpose: conversion
+// Required data: { title, body, qrPlaceholder? }
+// Gate rule: only at article end, paired with back-cover
+// When to use: article ending, "关注"/"订阅"/"扫码" type content
+```
+
 ## Anti-Patterns Specific to Multi-Illustration Mode
 
 | Anti-Pattern | Detection | Fix |
@@ -351,3 +591,22 @@ After generation, output the article ↔ illustration mapping:
 | **Context-dependent quote** | Quote that makes no sense without the article | Skip; only use quotes that are independently impactful |
 | **Over-illustration** | More illustrations than paragraphs | Maximum ratio: 1 illustration per 2 substantial paragraphs |
 | **Under-illustration** | Article with 5+ data points but no data chart | Flag in Step B as "missed opportunity" |
+| **Type overuse** | Same illustration type appears >1 time (e.g., 2 covers, 3 quote-cards) | Enforce uniqueness constraint per type (see below) |
+
+### Uniqueness Constraint
+
+Each illustration type has a maximum count per article. Exceeding it means the content should be merged or the type should be changed:
+
+| Type | Max Count | Rationale |
+|------|-----------|-----------|
+| cover | 1 | One article, one opening |
+| back-cover | 1 | One article, one closing |
+| verdict-card | 1 | One core judgment per article |
+| manifesto-card | 1 | One declaration per article |
+| quote-card | 2 | Opening + closing, no more |
+| bridge-card | N-1 | Where N = number of sections |
+| section-divider | N-1 | Same as bridge |
+| callout-card | 3 | Too many callouts = noise |
+| All other types | 2 | If more needed, consider merging |
+
+**Exception**: User can explicitly override with "我就是要2张封面" — respect user intent.
