@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0] - 2026-06-09
+
+### Added
+- **Multi-Illustration Mode**: Generate multiple illustrations for a single article
+  - Step A: Article parsing (extract thesis, data, logic chains, quotes, comparisons)
+  - Step B: Illustration plan + density scoring (3-dimension 15-point gate, ≥9/15 to generate)
+  - Step C: Style unification confirmation (shared design-tokens.css across all illustrations)
+  - Step D: Batch generation (shared tokens + per-illustration data/components)
+  - Step E: Illustration map (article section ↔ illustration mapping)
+  - Two mandatory confirmation points: content plan + style plan
+  - Content drives quantity, not templates
+  - Every illustration independently passes density gate
+- **5 new illustration templates**: cover, back-cover, quote-card, section-divider, logic-chain
+- **WeChat public account size specs**: 封面 900×383, 正文 640px, 金句 640×640
+- **Multi-illustration anti-patterns**: forced quantity, filler illustrations, style drift, duplicate info
+- Mode detection: "多图"/"配图"/"全套"/"文章配图" triggers Multi-Illustration Mode
+- Rules #14 and #15 added for multi-illustration content-driven quantity and density gate
+
+### Changed
+- Version bumped from 4.0.0 to 4.1.0
+- SKILL.md restructured: Mode Detection section + Single Draft Mode + Multi-Illustration Mode
+- Rule #3 updated: density threshold now differentiates single mode (≥16/25) vs multi mode (≥9/15)
+
 ## [4.0.0] - 2026-06-08
 
 ### Added
