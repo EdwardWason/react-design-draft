@@ -133,6 +133,35 @@ These fonts are installed on the user's machine and available for design drafts:
 | Ubuntu Mono | `'Ubuntu Mono'` | `UbuntuMono[wght].ttf` | Mono — code, data |
 | TsangerJinKai02 | `'TsangerJinKai02'` | User installed | Kai/Serif — elegant, restrained, Kami default Chinese font |
 
+### Multi-Language Font Stacks
+
+When content contains Japanese or Korean text, use these font stacks:
+
+```css
+/* Japanese */
+--font-display-ja: 'YuMincho', 'Yu Mincho', 'Hiragino Mincho ProN', 'Noto Serif CJK JP', 'Source Han Serif JP', 'TsangerJinKai02', Georgia, serif;
+--font-body-ja: 'Noto Sans CJK JP', 'Source Han Sans JP', 'Hiragino Sans', sans-serif;
+
+/* Korean */
+--font-display-ko: 'Source Han Serif K', 'Source Han Serif KR', 'Noto Serif KR', 'Apple SD Gothic Neo', AppleMyungjo, Charter, Georgia, serif;
+--font-body-ko: 'Noto Sans KR', 'Source Han Sans KR', 'Apple SD Gothic Neo', sans-serif;
+```
+
+### Slide Scaling Formula
+
+When generating slides or presentation-mode design drafts:
+
+| Property | Print/Screen | Slide | Reason |
+|----------|-------------|-------|--------|
+| Title size | 30-34pt | 48-64pt | Projection needs larger text |
+| Inner padding | N/A | 72-80px top, 80px sides | <72px top feels cramped |
+| Eyebrow tracking | 0.5-1pt | 3px max | Print tracking spreads on screen |
+| Display tracking | 0 to -0.2pt | -0.5pt | Tighten large titles to prevent letter gaps |
+| Header gap | 8-14pt | 36px+ | <36px rule looks like underline |
+| Title line-height | 1.1-1.3 | 1.3 minimum | CJK chars collide at slide scale <1.3 |
+| Macro spacing | base | ×1.6 | Section gaps, margins |
+| Micro spacing | base | ×0.5 | Label-to-value, badge padding |
+
 ### Font Size Scale
 
 Modular scale (ratio 1.25): 12 → 14 → 16 → 20 → 24 → 32 → 48
@@ -162,6 +191,45 @@ Each palette defines: bg-primary, bg-secondary, bg-card, text-primary, text-seco
 | **duotone** | #0A0A0A | #FAFAFA | #FF6B35 |
 | **macaron** | #FFF5F5 | #4A4A4A | #FFB5C2, #B5DEFF, #C5E8B0, #E8C5FF |
 | **kami-parchment** | #F5F4ED | #141413 | #1B365D (ink-blue, sole accent) |
+
+#### Kami Full Token System (when style = kami-editorial)
+
+When using kami-editorial, the full token system below replaces the simplified 3-variable kami-parchment:
+
+```css
+:root {
+  /* Brand */
+  --kami-brand: #1B365D;
+  --kami-brand-light: #2D5A8A;
+
+  /* Surfaces */
+  --kami-parchment: #f5f4ed;
+  --kami-ivory: #faf9f5;
+  --kami-warm-sand: #e8e6dc;
+  --kami-dark-surface: #30302e;
+  --kami-deep-dark: #141413;
+
+  /* Text */
+  --kami-near-black: #141413;
+  --kami-dark-warm: #3d3d3a;
+  --kami-olive: #504e49;
+  --kami-stone: #6b6a64;
+
+  /* Borders */
+  --kami-border: #e8e6dc;
+  --kami-border-soft: #e5e3d8;
+
+  /* Brand derivatives */
+  --kami-brand-tint: #EEF2F7;
+  --kami-tag-bg: #E4ECF5;
+
+  /* Semantic warm (only approved exception) */
+  --kami-breaking-bg: #f0e0d8;
+  --kami-breaking-fg: #8b4513;
+}
+```
+
+**Application rules**: When kami-editorial is selected, ALL kami tokens above must be used. Do not mix with generic palette variables.
 
 #### Brand DNA Palettes (auto-applied when content source detected)
 
