@@ -63,6 +63,8 @@ Each proposed illustration is scored on 3 dimensions (5 points each, 15 total):
 
 **Gate threshold: ≥9/15.** Below 9 = skip or merge.
 
+**Exemption**: `cover` and `back-cover` types have a lower threshold of **≥6/15**. Rationale: cover/back-cover core value is brand identity and visual impact, not information density. However, a cover with no brand information and no thesis statement (<6) still fails.
+
 ### Output Format
 
 ```
@@ -237,6 +239,51 @@ After generation, output the article ↔ illustration mapping:
 // Gate rule: quote must be impactful WITHOUT full article context
 ```
 
+### Rule Card (铁律/规则卡片)
+
+```jsx
+// Layout: grid-cards (compact)
+// Content: numbered rules + violation consequence / impact per rule
+// Size: 640px wide
+// Density: high (distills rules into scannable format)
+// Required data: { title, rules: [{ number, rule, consequence? }] }
+// Gate rule: must have ≥2 rules with clear, actionable content
+// When to use: "三条铁律"/"5条原则"/"7条红线" type content
+```
+
+### Checklist Card (清单/检查项卡片)
+
+```jsx
+// Layout: vertical-list with status markers
+// Content: numbered items + description + severity/status marker (e.g., RED FLAG, ✅, ⚠️)
+// Size: 640px wide
+// Density: high (actionable checklist)
+// Required data: { title, items: [{ number, description, severity? }] }
+// Gate rule: must have ≥3 items with distinct, non-overlapping descriptions
+// When to use: "安全红线"/"检查清单"/"避坑指南" type content
+```
+
+### Cheatsheet Card (速查表卡片)
+
+```jsx
+// Layout: dense-grid (2-3 columns)
+// Content: numbered entries + name + one-line example, ultra-compact
+// Size: 640px wide
+// Density: very high (maximum information per pixel)
+// Required data: { title, entries: [{ id, name, example }] }
+// Gate rule: must have ≥4 entries with name + example pairs
+// When to use: "B1-B6访谈规则"/"速查表"/"cheatsheet" type content
+```
+
+### How to Choose Knowledge Card Sub-Type
+
+| Content Pattern | Sub-Type | Key Signal |
+|----------------|----------|-----------|
+| "N条铁律/原则/规则" + 每条有违反后果 | rule-card | "违反后果"/"否则" per rule |
+| "N条红线/检查项" + 需要逐项打勾 | checklist-card | "检查"/"红线"/"RED FLAG" markers |
+| "N个方法/规则" + 每条有简短示例 | cheatsheet-card | "示例"/"e.g." per entry, compact layout |
+| 单独一句引述/金句 | quote-card | Single quote, standalone impact |
+
 ### Section Divider (章节分隔图)
 
 ```jsx
@@ -251,13 +298,47 @@ After generation, output the article ↔ illustration mapping:
 ### Logic Chain (论证链)
 
 ```jsx
-// Layout: flow-chart
+// Layout: flow-chart (horizontal)
 // Content: causal chain with 3-6 nodes, each node = one claim
 // Size: 640px wide
 // Density: high (reveals structure invisible in prose)
 // Required data: { nodes: [{ claim, evidence? }], connections: [{ from, to, label? }] }
-// Gate rule: chain must have ≥3 nodes with clear causal/sequential relationship
+// Gate rule: chain must have ≥3 nodes with clear CAUSAL relationship (A causes B)
+// When to use: "A导致B导致C" type reasoning
 ```
+
+### Process Pipeline (流程管道)
+
+```jsx
+// Layout: flow-chart (vertical or horizontal with input/output)
+// Content: sequential phases/stages, each with input → process → output
+// Size: 640px wide
+// Density: high (reveals pipeline structure)
+// Required data: { phases: [{ name, input, output, steps? }] }
+// Gate rule: must have ≥2 phases with clear input/output boundaries
+// When to use: "Phase 0 → Phase 1 → Phase 2" type pipeline, each phase has defined input/output
+```
+
+### Version Timeline (版本演进)
+
+```jsx
+// Layout: timeline
+// Content: version/iteration history, each node = what changed
+// Size: 640px wide
+// Density: medium (shows evolution trajectory)
+// Required data: { versions: [{ label, changes: string[], keyMetric? }] }
+// Gate rule: must have ≥3 versions with meaningful differences
+// When to use: "v1→v2→v3" type iteration history
+```
+
+### How to Distinguish
+
+| Content Pattern | Type | Key Signal |
+|----------------|------|-----------|
+| "A导致B导致C" | logic-chain | Causal verbs: 导致/引起/使得 |
+| "阶段0 → 阶段1 → 阶段2" | process-pipeline | Phase/stage structure with input/output |
+| "v1→v2→v3" or "2023→2024→2025" | version-timeline | Version numbers or dates as nodes |
+| "步骤1 → 步骤2 → 步骤3" | flow-chart (from chart-system.md) | Sequential steps without causal claim |
 
 ## Anti-Patterns Specific to Multi-Illustration Mode
 
