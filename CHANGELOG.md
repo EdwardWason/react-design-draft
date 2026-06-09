@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2026-06-08
+
+### Added
+- **Chart system** (P0): 14 chart types with auto-selection decision tree + CSS/SVG implementation specs
+  - bar-chart, horizontal-bar-chart, line-chart, donut-chart, quadrant-chart
+  - flow-chart, swimlane-chart, state-machine, tree-chart, layered-diagram
+  - venn-diagram, candlestick-chart, waterfall-chart, treemap
+- **Brand Profile system** (P0): Four-layer brand configuration with priority resolution
+  - Layer 1: Explicit prompts (highest)
+  - Layer 2: Brand DNA auto-detection
+  - Layer 3: User brand profile (`~/.config/react-design-draft/brand.md`)
+  - Layer 4: Three-dimension auto-selection (lowest)
+  - Project style scanning (CSS/tailwind/tokens extraction)
+- **Kami Full Token System** (P1): 20+ CSS variables replacing simplified 3-variable kami-parchment
+  - Brand: --kami-brand, --kami-brand-light
+  - Surfaces: --kami-parchment, --kami-ivory, --kami-warm-sand, --kami-dark-surface, --kami-deep-dark
+  - Text: --kami-near-black, --kami-dark-warm, --kami-olive, --kami-stone
+  - Borders: --kami-border, --kami-border-soft
+  - Derivatives: --kami-brand-tint, --kami-tag-bg, --kami-breaking-bg, --kami-breaking-fg
+- **Extended Anti-Patterns** (P1): 7 categories, 38 rules (up from 10 red lines)
+  - Content Hollow (#1-5), Metric Fraud (#6-10), Structural Mimicry (#11-15)
+  - Visual Excess (#16-19), Source Missing (#20-23), Tone Pollution (#24-29)
+  - CJK & Layout Specific (#30-38)
+- **Writing quality gate** (P1): Assertion-evidence, Impact formula, data-over-adjectives, no-AI-officialese
+- **Document type presets** (P2): 9 Kami-inspired templates
+  - one-pager-doc, long-doc, letter, portfolio, resume, equity-report, changelog, landing-page, slides
+- **Multi-language font stacks** (P2): Japanese (YuMincho) and Korean (Source Han Serif K)
+- **Slide scaling formula** (P2): Macro ×1.6, Micro ×0.5, with 7 property-specific rules
+- Step 0: Brand Profile added to execution flow
+- SKILL.md Rules expanded from 10 to 13 (added #11 Brand profile, #12 Chart auto-selection, #13 Writing quality gate)
+
+### Changed
+- Version bumped from 3.0.0 to 4.0.0
+- Execution flow: 4 steps → 5 steps (added Step 0: Brand Profile)
+- Step 1 now includes chart needs detection and content quality pre-check
+- Step 2 Confirm & Advise now includes chart type recommendation
+- Step 3 now references chart-system.md
+
 ## [3.0.0] - 2026-06-08
 
 ### Added
