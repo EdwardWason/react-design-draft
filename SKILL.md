@@ -1,13 +1,13 @@
 ---
 name: "react-design-draft"
-version: "4.1.0"
+version: "4.2.0"
 category: "content-creation"
 description: "Generate React design drafts (4-piece set) from content. Invoke for 'design draft'/'设计稿'/'生成页面'/'信息图'/'知识卡片'/'多图配图'. Do NOT use for editing existing code."
 metadata:
   requires_api_key: false
 ---
 
-# React Design Draft Generator v4.1
+# React Design Draft Generator v4.2
 
 Transforms user content into information-dense, visually refined React design drafts. Core advantage: **every element is independently editable, restructuring-capable, and version-controllable**.
 
