@@ -81,7 +81,7 @@ These patterns indicate density has crossed into clutter. **Any one = reject and
 | **Icon + emoji + badge on same line** | Visual overload |
 | **Grid gap < 8px** | Elements merge visually |
 
-## Extended Anti-Patterns (7 Categories, 48 Rules)
+## Extended Anti-Patterns (8 Categories, 48 Rules)
 
 Inspired by Kami's anti-pattern system. These are quality gates, not suggestions.
 
@@ -143,6 +143,23 @@ Inspired by Kami's anti-pattern system. These are quality gates, not suggestions
 | 27 | AI tone markers (dash stacking, meta-commentary) | Delete meta-comments, replace dashes with colons/periods |
 | 28 | Sans font stack missing CJK fallback | Any element that might render CJK must include `var(--serif)` |
 | 29 | Caption restating slide title | Caption must give information the title doesn't |
+
+### Category 8: AI Voice Decontamination (#39-48)
+
+Inspired by md2wechat's humanize principle. These rules detect and remove AI-generated text patterns that feel inauthentic to human readers.
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 39 | Universal transition phrases ("值得注意的是"/"需要指出的是"/"值得一提的是") | Delete entirely; if the point matters, state it directly |
+| 40 | Fake specificity ("多个"/"若干"/"一系列" without exact count) | Replace with exact number: "3个"/"5项" |
+| 41 | Hollow emphasis ("至关重要"/"不可或缺"/"举足轻重") | Replace with specific evidence: "占营收62%" not "至关重要" |
+| 42 | Parallel triple structure (3 consecutive identical sentence patterns) | Vary structure; use one short + one long + one question |
+| 43 | Excessive humility ("仅供参考"/"个人浅见"/"不揣浅陋") | State the claim confidently; let evidence do the hedging |
+| 44 | AI hedging ("在一定程度上"/"从某种意义上说") | Either commit to the claim or add a specific condition |
+| 45 | Listicle padding (item that restates the intro) | Each list item must add a NEW dimension, not rephrase |
+| 46 | Conclusion that merely summarizes | Conclusion must escalate: add a judgment or implication not stated before |
+| 47 | Rhetorical question chain (>2 consecutive questions) | Replace with assertions; questions are for the reader, not the writer |
+| 48 | "In today's world" / "在当今时代" opening | Start with the specific claim, not the era |
 
 ### Category 7: CJK & Layout Specific (#30-38)
 
