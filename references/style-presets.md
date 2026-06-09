@@ -68,6 +68,14 @@ Pre-configured Layout × Style × Palette combinations for common use cases. Use
 | **section-divider** | 章节分隔、divider | hero-center | minimal | auto-match | 640×200 | 长文章节节奏 |
 | **logic-chain** | 论证链、因果链、逻辑 | flow-chart | editorial-infographic | auto-match | 640px wide | 论证结构可视化 |
 
+### Knowledge Card Sub-Types
+
+| Preset Name | Keywords | Layout | Style | Palette | Size | Usage |
+|-------------|----------|--------|-------|---------|------|-------|
+| **rule-card** | 铁律、原则、规则 | grid-cards (compact) | editorial-infographic | auto-match | 640px wide | 编号规则+违反后果 |
+| **checklist-card** | 红线、检查项、清单 | vertical-list | editorial-infographic | auto-match | 640px wide | 逐项检查+严重性标记 |
+| **cheatsheet-card** | 速查表、cheatsheet | dense-grid | editorial-infographic | auto-match | 640px wide | 编号+名称+示例，超紧凑 |
+
 Note: `auto-match` means palette/style inherited from the article's unified style (Step C).
 
 ### Brand DNA Presets
