@@ -144,6 +144,9 @@ When content originates from a recognizable brand/media, auto-detect and apply i
 | **GitHub** | github.com, "GitHub" | Dark bg + green accent | Monospace-heavy | Code blocks, repo stats, markdown |
 | **Notion** | notion.so, "Notion" | Off-white + minimal | System UI | Block-based, clean, toggle lists |
 | **Kami / 纸墨** | tw93/kami, "Kami", "纸墨风" | kami-parchment #F5F4ED + ink-blue #1B365D | TsangerJinKai02 | Kami Ten Invariants apply |
+| **ByteDance / 字节跳动** | bytedance.com, "字节跳动", "抖音", "今日头条" | 字节蓝 #325AB4 + 白/浅灰 | Noto Sans SC | 紧凑卡片、数据密集、信息流风格 |
+| **少数派 / sspai** | sspai.com, "少数派" | sspai-red #D93A31 + 白/暖灰 | Noto Sans SC | 长文排版、留白舒适、编辑风 |
+| **极客时间** | time.geekbang.org, "极客时间", "极客邦" | 极客蓝 #3564D9 + 深色 | Noto Sans SC | 知识卡片、步骤清晰、课程风 |
 
 ### Brand DNA Application Rules
 
