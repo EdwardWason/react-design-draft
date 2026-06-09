@@ -80,6 +80,20 @@ Pre-configured Layout × Style × Palette combinations for common use cases. Use
 | **kami-report** | 纸墨风、Kami、雅致、财报 | grid-cards or bento-grid | kami-editorial | kami-parchment |
 | **kami-long-doc** | 长文档、排版、阅读 | step-flow or timeline | kami-editorial | kami-parchment |
 
+### Document Type Presets (Kami-inspired)
+
+| Preset Name | Keywords | Layout | Style | Palette | Writing Strategy |
+|-------------|----------|--------|-------|---------|-----------------|
+| **one-pager-doc** | 一页纸、提案、pitch | dense-modules | editorial-infographic | elegant | 30s comprehension test; ask above fold; data ≥30% of body |
+| **long-doc** | 白皮书、长文、报告 | step-flow | aged-academia | warm | Lead each chapter with assertion paragraph; alternate long paragraphs with callouts |
+| **letter** | 信件、正式函件 | single-column | minimal | mono | First paragraph: one-sentence purpose; last paragraph: specific ask |
+| **portfolio** | 作品集、项目展示 | grid-cards | craft-handmade | earth | Open with problem and stakes, not role or project name |
+| **resume** | 简历、CV | dense-modules | minimal | cool | Strict 2-page A4; Impact formula: Action + Scope + Measurable Result |
+| **equity-report** | 研报、个股分析 | bento-grid | editorial-infographic | cool | Open with differentiated insight; each claim linked to quantifiable financial impact |
+| **changelog** | 更新日志、变更记录 | timeline | technical-schematic | mono | One sentence per change; verb-led; user language |
+| **landing-page** | 落地页、产品页 | bento-grid | minimal | vivid | Hero: positioning before features; CTA: dual buttons (try + buy) |
+| **slides** | 演示、PPT、幻灯片 | step-flow | bold-editorial | vivid | Title = complete assertion; 20-40 words/page; three-act structure |
+
 ## How Presets Work
 
 1. **User mentions a keyword** (e.g., "帮我做一个知识卡片")
