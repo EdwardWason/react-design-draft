@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.1.0] - 2026-06-09
+
+### Added — md2wechat-skill Absorption (6 elements)
+
+- **4-Purpose Decision Framework**: Each illustration now tagged with purpose (attention/readability/memorability/conversion), driving silent design parameter adjustments
+  - Step A extraction table: added `Purpose` column for all 20 extract types
+  - Step B: added Purpose-Based Design Adjustments table (token overrides per purpose)
+- **11 new illustration type templates**: verdict-card, audience-fit-card, myth-fact-card, manifesto-card, bridge-card, callout-card, definition-card, cases-card, notice-card, series-card, subscribe-card
+  - Emoji mapping table expanded from 13 to 24 entries
+- **AI Voice Decontamination (Category 8)**: 10 new anti-patterns (#39-48) for detecting and removing AI-generated text patterns
+  - Universal transitions, fake specificity, hollow emphasis, parallel triple, excessive humility, AI hedging, listicle padding, summary-only conclusions, rhetorical question chains, "in today's world" openings
+- **Content Readiness Check**: Pre-matching structural check in Step 1 — verifies content has visualizable units before proceeding
+- **3 new Brand DNA entries**: ByteDance/字节跳动, 少数派/sspai, 极客时间
+- **Uniqueness Constraint**: Anti-pattern for type overuse + per-type max count table (cover:1, verdict:1, quote:2, etc.)
+
+### Changed
+- Version bumped from 5.0.0 to 5.1.0
+- SKILL.md Step 1: added Content Readiness Check as step 1, renumbered subsequent steps
+- SKILL.md Step 1.6: added AI voice decontamination reference
+- density-standards.md: expanded from 38 to 48 anti-pattern rules
+- content-layout-mapping.md: Brand DNA Registry expanded from 10 to 13 brands
+- multi-illustration.md: Step A table expanded from 10 to 20 extract types
+- multi-illustration.md: Anti-Patterns expanded from 7 to 8 entries
+
+## [5.0.0] - 2026-06-09
+
+### Added — Persona Layer (人设层)
+- **配图大师人设**: "你的工作不是让用户理解设计术语，而是把模糊的'好看'翻译成精确的设计参数"
+- **Master Mode**: "大师推荐"/"你定"/"直接来" 一键跳过所有确认点，全自动化生成
+- **3-question style customization**: 用3个简单问题（调性→印象→配色）替代23种风格×12种配色选择
+- **Emoji + description mapping**: 13种内部类型翻译为用户可理解的 emoji + 一句话描述
+- **User-friendly Step B output**: 配图方案用自然语言展示，密度评分内部计算不暴露
+- **Usage Guide (Step E)**: 文章章节→配图位置映射 + 快速修改指令，替代技术文档
+
+### Added — Aesthetics Philosophy Layer (审美哲学层)
+- **The Three Constraints (三大约束)**: 克制(Restraint) + 呼吸(Breathing) + 温度(Warmth)
+  - 克制: 品牌色≤5%面积，单色原则
+  - 呼吸: whisper shadow，0.5pt边框，8pt圆角
+  - 温度: 暖灰色系，禁冷蓝灰，禁纯白背景
+- **Warm gray scale**: 7级暖灰色替代冷蓝灰色（#141413→#3d3d3a→#504e49→#6b6a64→#e8e6dc→#f5f4ed→#faf9f5）
+- **Serif weight lock**: 衬线体锁定500，禁止700/900
+- **CJK letter-spacing**: 中文衬线正文0.3pt，标题0.2-1pt
+- **Anti-Slop 8 red lines**: 禁止连续同布局/纯白背景/冷蓝灰/衬线粗体/硬投影/rgba标签等
+
+### Changed
+- Version bumped from 4.2.0 to 5.0.0
+- SKILL.md: Mode Detection 增加 Master Mode 入口
+- SKILL.md: Step 2 从技术参数展示改为3问题降维
+- SKILL.md: Rules 从15条扩展到19条，增加审美哲学层规则
+- multi-illustration.md: Step B 从技术方案改为人话版+大师建议
+- multi-illustration.md: Step C 从风格参数改为3问题定制
+- multi-illustration.md: Step E 从配图地图改为使用指南
+- aesthetics-guide.md: 增加 Phase 0 审美哲学层（三大约束+8条红线）
+
 ## [4.2.0] - 2026-06-09
 
 ### Added
