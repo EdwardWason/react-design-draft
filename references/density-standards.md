@@ -81,6 +81,83 @@ These patterns indicate density has crossed into clutter. **Any one = reject and
 | **Icon + emoji + badge on same line** | Visual overload |
 | **Grid gap < 8px** | Elements merge visually |
 
+## Extended Anti-Patterns (7 Categories, 48 Rules)
+
+Inspired by Kami's anti-pattern system. These are quality gates, not suggestions.
+
+### Category 1: Content Hollow (#1-5)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 1 | Adjective stacking without numbers | Write specific numbers: "3x faster" not "much faster" |
+| 2 | Filler opening paragraphs | Delete, start directly with the point |
+| 3 | Title restated as sentence | Body must add information the title doesn't carry |
+| 4 | Vague time references ("recently", "lately") | Anchor to date/quarter: "Q4 2025" |
+| 5 | Synonyms masking repetition | One claim, one evidence, move on |
+
+### Category 2: Metric Fraud (#6-10)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 6 | Integer implying precision | Match source precision: "approximately 40%" not "40%" |
+| 7 | Fake decimal precision | Round to source precision or state "approximately" |
+| 8 | Metric-narrative disconnect | Text must match what the chart shows |
+| 9 | Fabricated comparison baseline | Name the alternative and baseline method |
+| 10 | Mixed time periods in comparison | Label each comparison window explicitly |
+
+### Category 3: Structural Mimicry (#11-15)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 11 | Resume entries without results | Use Impact formula: Action + Scope + Measurable Result |
+| 12 | Template slot filling | Name specific skills and application scenarios |
+| 13 | Research report without differentiated insight | State what the market is getting wrong |
+| 14 | One-pager without clear ask | Ask must be above the fold |
+| 15 | Slide title is label not assertion | Use assertion-evidence pattern: "Revenue grew 3x" not "Revenue" |
+
+### Category 4: Visual Excess (#16-19)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 16 | > 3 brand-color accents per page | One accent color is enough |
+| 17 | Chart without insight title | Title must state the insight, not just the metric |
+| 18 | Decorative chart restating text | Chart must add a dimension text doesn't convey |
+| 19 | Icons/emoji as section markers | Use typographic hierarchy instead |
+
+### Category 5: Source Missing (#20-23)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 20 | Unverified version numbers | Check official source before writing |
+| 21 | "Latest" without date | Always attach a date |
+| 22 | Competitive comparison without market data | Cite ranking source |
+| 23 | Assumed availability | List actually verified platforms |
+
+### Category 6: Tone Pollution (#24-29)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 24 | Chinese AI officialese (赋能/打造/拥抱/助力) | Say what it does, not what it "empowers" |
+| 25 | English AI officialese (leverage/unlock/seamlessly) | Use human language |
+| 26 | Caption restating flowchart | Give judgment beyond what the diagram shows |
+| 27 | AI tone markers (dash stacking, meta-commentary) | Delete meta-comments, replace dashes with colons/periods |
+| 28 | Sans font stack missing CJK fallback | Any element that might render CJK must include `var(--serif)` |
+| 29 | Caption restating slide title | Caption must give information the title doesn't |
+
+### Category 7: CJK & Layout Specific (#30-38)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 30 | CJK/Latin number baseline drift | Use `font-variant-numeric: lining-nums tabular-nums` |
+| 31 | Currency symbol scaling misaligned | Use `font-size: 0.74em; transform: translateY(0.015em)` |
+| 32 | Tag background using rgba | Use solid hex only (WeasyPrint double-rect bug) |
+| 33 | Hard drop shadows | Use ring shadow or whisper shadow |
+| 34 | Pure white (#FFF) background | Use parchment #f5f4ed or off-white |
+| 35 | Pure black (#000) text | Use near-black #141413 or #1D1D1B |
+| 36 | Serif synthetic bold (600/700) | Lock serif at 400/500 only |
+| 37 | Cool blue-gray tones | All grays must be warm-toned (yellow-brown undertone) |
+| 38 | Italic in print/PDF templates | Italic only allowed in screen-only contexts |
+
 ## Spacing System
 
 Use a consistent spacing scale based on 4px:
