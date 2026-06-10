@@ -144,6 +144,20 @@ Inspired by Kami's anti-pattern system. These are quality gates, not suggestions
 | 28 | Sans font stack missing CJK fallback | Any element that might render CJK must include `var(--serif)` |
 | 29 | Caption restating slide title | Caption must give information the title doesn't |
 
+### Category 7: CJK & Layout Specific (#30-38)
+
+| # | Anti-Pattern | Fix |
+|---|-------------|-----|
+| 30 | CJK/Latin number baseline drift | Use `font-variant-numeric: lining-nums tabular-nums` |
+| 31 | Currency symbol scaling misaligned | Use `font-size: 0.74em; transform: translateY(0.015em)` |
+| 32 | Tag background using rgba | Use solid hex only (WeasyPrint double-rect bug) |
+| 33 | Hard drop shadows | Use ring shadow or whisper shadow |
+| 34 | Pure white (#FFF) background | Use parchment #f5f4ed or off-white |
+| 35 | Pure black (#000) text | Use near-black #141413 or #1D1D1B |
+| 36 | Serif synthetic bold (600/700) | Lock serif at 400/500 only |
+| 37 | Cool blue-gray tones | All grays must be warm-toned (yellow-brown undertone) |
+| 38 | Italic in print/PDF templates | Italic only allowed in screen-only contexts |
+
 ### Category 8: AI Voice Decontamination (#39-48)
 
 Inspired by md2wechat's humanize principle. These rules detect and remove AI-generated text patterns that feel inauthentic to human readers.
@@ -160,20 +174,6 @@ Inspired by md2wechat's humanize principle. These rules detect and remove AI-gen
 | 46 | Conclusion that merely summarizes | Conclusion must escalate: add a judgment or implication not stated before |
 | 47 | Rhetorical question chain (>2 consecutive questions) | Replace with assertions; questions are for the reader, not the writer |
 | 48 | "In today's world" / "在当今时代" opening | Start with the specific claim, not the era |
-
-### Category 7: CJK & Layout Specific (#30-38)
-
-| # | Anti-Pattern | Fix |
-|---|-------------|-----|
-| 30 | CJK/Latin number baseline drift | Use `font-variant-numeric: lining-nums tabular-nums` |
-| 31 | Currency symbol scaling misaligned | Use `font-size: 0.74em; transform: translateY(0.015em)` |
-| 32 | Tag background using rgba | Use solid hex only (WeasyPrint double-rect bug) |
-| 33 | Hard drop shadows | Use ring shadow or whisper shadow |
-| 34 | Pure white (#FFF) background | Use parchment #f5f4ed or off-white |
-| 35 | Pure black (#000) text | Use near-black #141413 or #1D1D1B |
-| 36 | Serif synthetic bold (600/700) | Lock serif at 400/500 only |
-| 37 | Cool blue-gray tones | All grays must be warm-toned (yellow-brown undertone) |
-| 38 | Italic in print/PDF templates | Italic only allowed in screen-only contexts |
 
 ## Spacing System
 
