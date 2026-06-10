@@ -171,10 +171,10 @@ If user said "大师推荐"/"你定"/"直接来" at Mode Detection:
 🎨 风格定制（3个问题帮你定调）
 
 问题1：你的文章调性是？
-  A. 严肃深度（像经济学人、财新）  → 纸墨克制风：衬线体 + 暖色底 + 单品牌色
-  B. 专业理性（像36氪、极客公园）  → 科技蓝调风：无衬线 + 冷色底 + 数据突出
-  C. 温暖人文（像人物、GQ报道）    → 暖色编辑风：衬线+无衬线混搭 + 暖棕底
-  D. 活泼有趣（像差评、半佛仙人）  → 大胆撞色风：高对比 + 强调色 + 粗体
+  A. 严肃深度（像经济学人、财新）  → Editorial Magazine：衬线体 + 暖色底 + 单品牌色
+  B. 专业理性（像36氪、极客公园）  → Swiss International：无衬线 + 灰白底 + 高反差功能色
+  C. 温暖人文（像人物、GQ报道）    → Editorial Magazine：衬线+无衬线混搭 + 暖棕底
+  D. 活泼有趣（像差评、半佛仙人）  → Swiss International：大胆撞色 + 强调色 + 粗体
 
 问题2：读者第一眼应该感受到什么？
   A. "这文章有分量"  → 加重衬线体 + 深色标题 + 大字封面
@@ -195,12 +195,46 @@ If user said "大师推荐"/"你定"/"直接来" at Mode Detection:
 
 ### Answer → Style Mapping (Internal)
 
-| Q1 Answer | Q2 Answer | Q3 Answer | Internal Style | Internal Palette | Font Preset |
-|-----------|-----------|-----------|---------------|-----------------|-------------|
-| A (严肃深度) | any | any | kami-editorial | ink-blue / brand-DNA | kami-serif |
-| B (专业理性) | any | any | modern-tech | tech-blue | tech-sans |
-| C (温暖人文) | any | any | morandi-journal | warm-earth | editorial-mix |
-| D (活泼有趣) | any | any | bold-editorial | vivid | bold-display |
+| Q1 Answer | Q2 Answer | Q3 Answer | Mode | Internal Style | Internal Palette | Font Preset |
+|-----------|-----------|-----------|------|---------------|-----------------|-------------|
+| A (严肃深度) | any | any | Editorial | kami-editorial | ink-blue / brand-DNA | kami-serif |
+| B (专业理性) | any | any | Swiss | swiss-intl | IKB Blue (default) | 现代简约 |
+| C (温暖人文) | any | any | Editorial | morandi-journal | warm-earth | editorial-mix |
+| D (活泼有趣) | any | any | Swiss | swiss-bold | Lemon Yellow / Safety Orange | 现代简约 |
+
+### Visual Rhythm Planning (主题节奏规划)
+
+**Before generating, plan the visual rhythm across all illustrations.** Inspired by guizang's theme rhythm system.
+
+Each illustration gets a theme class that controls its visual weight:
+
+| Theme Class | Visual Effect | When to Use |
+|------------|--------------|-------------|
+| **hero** | Maximum visual impact, large type, strong contrast | Cover, back-cover, key verdict |
+| **dark** | Dark background, light text, breathing room | Logic chains, myth-fact, manifesto |
+| **light** | Light background, dark text, content-dense | Metrics, data charts, checklists |
+| **accent** | Accent color highlight, attention-grabbing | Quote cards, callouts, CTA |
+
+**Hard rules**:
+- No more than 3 consecutive illustrations with the same theme class
+- Sets of 6+ illustrations must have ≥1 hero + ≥1 dark + ≥1 light
+- Every 3-4 content illustrations, insert 1 hero or dark illustration for visual breathing
+- Cover and back-cover are always hero
+- The overall rhythm should feel like: **hero → content → content → breathing → content → hero**
+
+**Example rhythm for 8 illustrations**:
+```
+01-cover:     hero (dark)
+02-metrics:   light
+03-logic:     dark
+04-pipeline:  light
+05-timeline:  light
+06-myth-fact: dark
+07-quote:     accent
+08-back:      hero (light)
+```
+
+**Self-check**: After planning, verify rhythm is not monotonous. If all content pages are "light", the set feels flat — add dark/accent pages.
 
 Q2 fine-tunes: A→heavier headings, B→larger numbers, C→bigger quotes, D→stronger structure
 Q3 overrides palette: A→brand-DNA auto-detect, B→user custom, C→default restrained
