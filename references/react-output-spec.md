@@ -260,6 +260,40 @@ import './design-tokens.css';
 ```
 ````
 
+## Adaptive Font Size Rules (自适应字号)
+
+Font sizes must adapt to content length, not stay fixed. A title that overflows its container is worse than a slightly smaller title that fits.
+
+### Title Length → Size Mapping
+
+| Title Length | Chinese chars | Size (640px canvas) | Weight | Line Clamp |
+|-------------|--------------|---------------------|--------|-----------|
+| Short (1-6 chars) | ≤6 | 56-72px | 200-400 | 1 line |
+| Medium (7-14 chars) | 7-14 | 40-52px | 300-500 | 1-2 lines |
+| Long (15-24 chars) | 15-24 | 28-36px | 400-500 | 2 lines |
+| Extended (25+ chars) | 25+ | 22-28px | 500 | 2-3 lines |
+
+### Dynamic Adjustment Rules
+
+1. **Never overflow**: If text overflows its container at the planned size, reduce size by one tier first, then add `line-clamp` as fallback
+2. **Minimum readable size**: On 640px canvas, minimum body text = 14px, minimum caption = 10px
+3. **Number emphasis**: Data numbers in metric cards always use the largest size tier regardless of length (e.g., "$186.74亿" at 48px even though it's 9 chars)
+4. **CJK line-break**: Chinese text breaks at any character boundary. Do NOT rely on space-based word-break
+5. **Line-height scales with size**: Display (1.1-1.2), Body (1.5-1.6), Caption (1.3-1.4)
+
+### Implementation in React
+
+```jsx
+// Utility: adaptive title size
+function getTitleStyle(text, baseSize = 56) {
+  const len = text.length;
+  if (len <= 6) return { fontSize: baseSize, fontWeight: 300, lineHeight: 1.15 };
+  if (len <= 14) return { fontSize: baseSize * 0.72, fontWeight: 400, lineHeight: 1.2 };
+  if (len <= 24) return { fontSize: baseSize * 0.52, fontWeight: 500, lineHeight: 1.3 };
+  return { fontSize: baseSize * 0.4, fontWeight: 500, lineHeight: 1.4, WebkitLineClamp: 3 };
+}
+```
+
 ## Component Granularity Rules
 
 **Why**: React design drafts must be editable at the component level. Monolithic components defeat this purpose.
