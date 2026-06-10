@@ -1,8 +1,172 @@
-# Aesthetics Guide v2
+# Aesthetics Guide v3
 
-22 visual styles + 11 palettes + anti-patterns. Inspired by baoyu-skills' multi-dimension approach, adapted for React code generation.
+23 visual styles + 11 palettes + anti-patterns. Inspired by Kami's restraint system, taste-skill's anti-slop philosophy, and baoyu-skills' multi-dimension approach.
 
-## Phase 1: Choose Style (22 options)
+## Phase 0: The Three Constraints (审美哲学层)
+
+**All styles must obey these constraints. They are non-negotiable.**
+
+Inspired by Kami's "ten invariants" and taste-skill's "anti-slop" philosophy. Style can vary, but constraints are constant.
+
+### Constraint 1: 克制 (Restraint)
+
+- Brand/accent color covers **≤ 5% of document surface area**
+- Brand color is for: title left-bar, tags, CTA buttons, accent numbers only
+- More than 5% brand color = ornament, not design
+- **Single accent principle**: one chromatic color per design. No second chromatic color (exception: breaking-change badges must be registered as `--breaking-*` tokens)
+
+### Constraint 2: 呼吸 (Breathing)
+
+- Card spacing ≥ 2× content spacing (gap between cards must be visually larger than gap within cards)
+- Section title margin-bottom ≥ 2× margin-above (anchor the title to its content)
+- Whisper shadow only: `0 4pt 24pt rgba(0,0,0,0.05)`, never hard drop shadows
+- Ring shadow for emphasis: `0 0 0 1pt var(--brand)`, not box-shadow with offset > 4px
+- Border width: 0.5pt (not 1px), border-radius: 8pt minimum for cards
+
+### Constraint 3: 温度 (Warmth)
+
+- **All grays must have warm undertone** (R ≈ G > B in RGB). No cool blue-grays.
+- Forbidden: `#94A3B8`, `#CBD5E1`, `#E2E8F0`, `#F1F5F9`, `#F8FAFC` (these are cool blue-grays)
+- Required warm gray scale:
+  ```css
+  --near-black: #141413;   /* warm olive undertone, not pure black */
+  --dark-warm:  #3d3d3a;   /* secondary text */
+  --olive:      #504e49;   /* subtext, descriptions */
+  --stone:      #6b6a64;   /* tertiary, dates, metadata */
+  --border:     #e8e6dc;   /* warm border */
+  --parchment:  #f5f4ed;   /* warm cream background, never pure white */
+  --ivory:      #faf9f5;   /* card background */
+  ```
+- **Never** use `#FFFFFF` as page background. Use `--parchment` or `--ivory`.
+- **Never** use `#000000` as text color. Use `--near-black`.
+
+### Serif Weight Lock
+
+- Serif headings: weight 500 only. **Forbidden**: weight 600/700/900 on serif fonts
+- Serif body: weight 400 only
+- Rationale: synthetic bold on serif destroys the font's natural elegance
+
+### The Larger, The Lighter (越大越轻)
+
+**Core principle**: Large text should be lighter; small text should be heavier. This is the single most impactful typography rule for achieving "premium" feel.
+
+| Role | Size (640px canvas) | Weight | Tracking | Rationale |
+|------|---------------------|--------|----------|-----------|
+| Display/Hero | 56-72px | 200-400 | +0.04em | Light weight at large size = elegance, not shouting |
+| Section title | 36-48px | 400-500 | +0.03em | Medium weight anchors the hierarchy |
+| Body | 14-18px | 400-500 | normal | Standard reading weight |
+| Captions/meta | 10-12px | 500-650 | +0.1-0.22em | Small text needs heavier weight + wider tracking for readability |
+
+**Hard rules**:
+- A 56px+ title at weight 600+ instantly downgrades design from "premium" to "generic landing page"
+- Chinese display text: weight 500 max (serif) or 300-400 (sans)
+- Numbers in data cards: weight 200-400 at large size, 500-600 at small size
+- **Exception**: brand name / logo text can use 700+ regardless of size
+
+**Why it works**: The human eye perceives light-weight large text as confident and refined, while heavy-weight large text reads as aggressive and cheap. Think Monocle vs. a spam email.
+
+### CJK Letter-Spacing
+
+- Chinese body text with serif: `letter-spacing: 0.3pt` (compensate for density)
+- Chinese display text (24px+): `letter-spacing: 0.2-1pt` (optical breathing)
+- English body: `letter-spacing: 0`
+- Small labels (< 10pt): `+0.2 to +0.5pt`
+
+### Anti-Slop Rules (8 Red Lines)
+
+```
+🚫 禁止连续三张配图用相同布局
+🚫 禁止所有卡片居中排列（至少一张不对称）
+🚫 禁止品牌色大面积铺底（≤5%面积）
+🚫 禁止纯白背景（必须用暖色底）
+🚫 禁止冷蓝灰色系（#94A3B8 这类）
+🚫 禁止衬线体 font-weight: 700
+🚫 禁止硬投影（box-shadow 偏移量 > 4px）
+🚫 禁止 rgba 背景色标签（用 solid hex 替代）
+```
+
+---
+
+## Phase 0.5: Dual Style System (Editorial vs Swiss)
+
+Inspired by guizang-ppt-skill's two-stance design philosophy. The two systems are **visual stances, not content categories** — any topic can be rendered in either mode. Pick by editorial intent ("feature story" vs "release note"), not by topic lookup.
+
+### Mode A: Editorial Magazine (杂志社论风)
+
+Good fits: humanistic, cultural, narrative, reflective content — but also workplace essays, AI think-pieces, product retrospectives, anything wanting a slow magazine-feature pace.
+
+Visual anchors:
+- **Serif/Songti display title** + quiet sans body text
+- **Warm paper background** (#f5f4ed / #f1efea), deep ink text, restrained color
+- **Atmosphere layer**: subtle paper grain, ink wash, or gradient atmosphere (not flat beige)
+- **Magazine structure**: columns, pull-quotes, marginalia, ledger rows, large photo wells
+- **Large but purposeful whitespace**
+- **Fine rules** (0.5pt), editorial contrast, documentary photography
+
+Palettes: warm, elegant, earth, kami-parchment, morandi-journal, or any Brand DNA palette
+Font presets: 古典书卷, 瘦金风骨, 纸墨书卷(Kami), 官方权威
+
+### Mode B: Swiss International (瑞士国际主义风)
+
+Good fits: tech products, data reports, engineering, design, annual summaries — anything wanting an engineered, quantified, decisive feel.
+
+Visual anchors:
+- **Full sans-serif** (Inter / Noto Sans SC), no serif anywhere
+- **Light paper background** (#fafaf8) + near-black text (#0a0a0a)
+- **Grid/dot matrix background** (CSS pattern, not WebGL)
+- **One high-saturation accent only**: IKB Blue / Lemon Yellow / Lemon Green / Safety Orange
+- **Strict left-aligned grid**, hairline rules, no center alignment (except special covers)
+- **Card-fill matrices**, KPI towers, h-bar charts, numbered statements
+
+Palettes: Swiss-specific (see below)
+Font presets: 现代简约 only (Inter + Noto Sans SC)
+
+### Swiss Accent Palettes (4 options, pick one)
+
+| Accent | Hex | accent-on | Vibe | Best For |
+|--------|-----|-----------|------|----------|
+| **IKB Blue** (克莱因蓝) | #002FA7 | #ffffff | Academic, rational, classic Swiss | AI/tech/design, default choice |
+| **Lemon Yellow** (柠檬黄) | #FFD500 | #0a0a0a | Active, vibrant, IKEA-like | Youth, retail, consumer |
+| **Lemon Green** (柠檬绿) | #C5E803 | #0a0a0a | Future, emerging, Off-White vibe | Eco, Gen-Z, new tech |
+| **Safety Orange** (安全橙) | #FF6B35 | #ffffff | Industrial, urgent, Saul Bass | Industrial, automotive, warnings |
+
+**Hard rules for Swiss mode**:
+- One accent only per design set. No mixing blue + yellow + green + orange
+- No gradients. Pure color blocks, hairline rules, grid modules only
+- No serif fonts loaded. No `font-family: serif` or `Noto Serif SC`
+- No rounded corners on accent blocks. Sharp edges only
+- Headings sit on top-left content axis, not center
+
+### Swiss Gray Scale (cross-accent unified)
+
+```css
+--swiss-paper: #fafaf8;    /* warm white, not pure white */
+--swiss-grey-1: #f0f0ee;   /* light grey block bg */
+--swiss-grey-2: #d4d4d2;   /* mid grey, dividers/borders */
+--swiss-grey-3: #737373;   /* dark grey, secondary text */
+--swiss-ink: #0a0a0a;      /* near-black, not pure black */
+```
+
+This gray scale is color-calibrated "premium gray" that doesn't compete with any accent. **Do not** replace with pure white (#fff) or pure black (#000).
+
+### Style Identity Test
+
+Before delivering, verify each illustration passes its identity test:
+
+**Swiss identity test** (ALL four must hold):
+1. Every large display title (≥48px) has font-weight ≤ 400
+2. No serif family loaded in the document. No element uses `font-family: serif`
+3. Section separators are hairline rules (1-2px) or grid gutters, not card borders + drop shadows
+4. Exactly one accent palette in use. No mixed accents across illustrations
+
+**Editorial identity test** (ALL three must hold):
+1. Background has at least one atmosphere layer beyond flat fill (grain, gradient, wash)
+2. Display title uses serif-zh family (Noto Serif SC / 汇文明朝体 / TsangerJinKai02)
+3. Contains at least one: large photo well, serif pull-quote, marginalia column, or ledger with magazine row hierarchy
+
+If a design fails its identity test, it is "generic" — fix it or switch mode honestly.
+
+## Phase 1: Choose Style (23 options)
 
 ### Professional & Clean
 
@@ -249,6 +413,18 @@ When using kami-editorial, the full token system below replaces the simplified 3
 - **Light text on dark bg**: never pure #FFF
 - **Accents must pass WCAG AA** contrast
 
+### Aesthetic Guardrails (保护美学比给自由更重要)
+
+Inspired by guizang's philosophy: "Color matching mistakes instantly destroy aesthetics — protecting beauty matters more than giving freedom."
+
+**Palette Lock Rule**: When using Swiss mode, only the 4 Swiss Accent Palettes are allowed. When using Editorial mode, only the warm/elegant/earth/kami/morandi palettes are allowed. Do not accept arbitrary hex values from users — recommend from presets instead.
+
+**Single Accent Principle (Swiss)**: One chromatic accent per design set. No mixing IKB Blue + Lemon Yellow in the same article's illustrations.
+
+**No Cross-Mode Mixing**: Do not use Swiss gray scale in Editorial mode, or Editorial warm grays in Swiss mode. Each mode has its own calibrated color system.
+
+**When user insists on custom color**: Allow it only if they provide a brand hex code with explicit brand context (e.g., "our brand color is #E3120B"). Register it as `--brand-accent` and apply single-accent rules.
+
 ## Phase 4: Layout & Composition
 
 - ✅ Asymmetric over symmetric when content allows
@@ -313,6 +489,24 @@ When using kami-editorial style, these 10 rules are absolute — think before ov
 - Circular avatar in every card
 - Progress bar for everything
 - Tooltip on every element
+
+### Image-Text Conflict Bans (图片-文字冲突防护)
+
+When an illustration places text on top of a photo (full-bleed cover, large image well, hero background):
+
+1. **Quiet zone test**: Photo must have a low-detail, low-contrast area where text will sit. If no quiet zone exists, use a framed-photo layout instead of full-bleed.
+
+2. **Subject mapping**: Before placing title, identify where the photo's subject/focal point sits. Place text only in documented safe zones. Record subject position as a CSS comment: `/* subject: center-top, safe zone: bottom 40% */`.
+
+3. **object-position discipline**: Set `object-position` inline on every `<img>` based on subject location. Default `center` is a fallback, not a recommendation.
+   - Face/portrait: `center 30%`
+   - Mid-body: `center 62%`
+   - Sky-heavy landscape: `center 70%`
+   - Foreground gear: `center 25%`
+
+4. **Thumbnail test**: Downscale rendered image to 360px wide. If title is not legible, move title, swap photo, or add localized image-toned tint around title area only.
+
+5. **No full-canvas falloffs**: Do not default to full-image dark overlays. If a tint is needed, apply it only around the text area, matching the image's own color temperature.
 
 ## Phase 7: Quality Checklist
 
