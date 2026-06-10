@@ -1,8 +1,8 @@
-# React Design Draft Generator v5.2.0
+# React Design Draft Generator v5.3.0
 
 > 从内容生成信息密度高、审美在线的 React 设计稿四件套
 
-[![版本](https://img.shields.io/badge/version-5.2.0-blue)](https://github.com/EdwardWason/react-design-draft)
+[![版本](https://img.shields.io/badge/version-5.3.0-blue)](https://github.com/EdwardWason/react-design-draft)
 [![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-react--design--draft-orange)](https://clawhub.ai/skills/react-design-draft)
 
@@ -98,7 +98,7 @@ MIT-0 © 2026
 
 ---
 
-# React Design Draft Generator v5.2.0
+# React Design Draft Generator v5.3.0
 
 > Generate information-dense, visually refined React design drafts (4-piece set) from content
 
