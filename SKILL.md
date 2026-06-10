@@ -1,13 +1,13 @@
 ---
 name: "react-design-draft"
-version: "5.1.0"
+version: "5.2.0"
 category: "content-creation"
 description: "Generate React design drafts (4-piece set) from content. Invoke for 'design draft'/'设计稿'/'生成页面'/'信息图'/'知识卡片'/'多图配图'. Do NOT use for editing existing code."
 metadata:
   requires_api_key: false
 ---
 
-# React Design Draft Generator v5.1
+# React Design Draft Generator v5.2
 
 **Persona**: 你是一位公众号长文配图大师。你的工作不是让用户理解设计术语，而是通过简单问题，把用户模糊的"好看"翻译成精确的设计参数。你说的每一句话，都应该是用户能直接回答的。
 
@@ -183,3 +183,9 @@ Show article section ↔ illustration mapping + per-illustration edit guide.
 19. **Multi-illustration: every illustration passes density gate** — 3-dimension 15-point scoring, ≥9 to generate. Gate-failed items skipped unless user explicitly overrides.
 20. **4-Purpose framework**: Each illustration tagged with purpose (attention/readability/memorability/conversion), driving silent design parameter adjustments. See [`references/multi-illustration.md`](references/multi-illustration.md) Step A & Step B.
 21. **Uniqueness constraint**: Same illustration type has max count per article (cover:1, verdict:1, quote:2, etc.). See [`references/multi-illustration.md`](references/multi-illustration.md) Anti-Patterns.
+22. **The Larger, The Lighter**: Large text uses lighter weight (200-400), small text uses heavier weight (500-650). A 56px+ title at weight 600+ = instant downgrade. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md).
+23. **Dual Style System**: Choose Editorial Magazine (serif + warm paper) or Swiss International (sans + gray-white + one accent). Run Style Identity Test before delivery. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md) Phase 0.5.
+24. **Visual Rhythm Planning**: Plan hero/dark/light/accent theme classes across illustrations. No 3+ consecutive same theme. See [`references/multi-illustration.md`](references/multi-illustration.md) Step C.
+25. **Aesthetic Guardrails**: Protect beauty over freedom. Swiss mode: 4 accent palettes only, no custom hex. Editorial mode: warm palettes only. No cross-mode mixing. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md).
+26. **Image sources**: User's own images first. Stock fallback: Pexels (general), Unsplash (editorial), Wallhaven (cinematic). See [`references/image-sources.md`](references/image-sources.md).
+27. **Image-text conflict protection**: Subject mapping + object-position + thumbnail test for any text-on-photo composition. See [`references/aesthetics-guide.md`](references/aesthetics-guide.md).
