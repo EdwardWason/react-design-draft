@@ -165,6 +165,28 @@ If user said "大师推荐"/"你定"/"直接来" at Mode Detection:
 
 **Persona rule**: Never ask users to choose from style/palette/font names. Use 3 simple questions instead. Every option must explain what it MEANS, not what it IS.
 
+### Category Detection (Silent, before Q1)
+
+Before asking the 3 questions, silently detect the content category from the article's topic, keywords, and structure. This determines the default visual language recommendation.
+
+| Category | Detection Signals | Default Mode | Default Palette | Key Visual Trait |
+|----------|------------------|-------------|----------------|-----------------|
+| **深度观察/商业洞察** | "IPO"/"估值"/"财报"/"行业"/"竞争" | Swiss | IKB Blue | 数据大字报、KPI塔、对比矩阵 |
+| **科技/产品** | "AI"/"发布"/"功能"/"测评"/"对比" | Swiss | IKB Blue or Safety Orange | 设备框截图、功能矩阵、版本对比 |
+| **人文/文化** | "历史"/"文学"/"艺术"/"电影"/"音乐" | Editorial | 牛皮纸 or 森林墨 | 衬线大标题、引文居中、大留白 |
+| **职场/干货** | "方法"/"步骤"/"清单"/"工具"/"效率" | Swiss | Lemon Green | 编号列表、步骤流程、速查表 |
+| **旅行/生活方式** | "旅行"/"城市"/"美食"/"探店"/"推荐" | Editorial | 暖色/earth | 大图压全屏、衬线标题、地图组件 |
+| **读书/笔记** | "书评"/"阅读"/"笔记"/"摘录"/"金句" | Editorial | 墨水经典 | 衬线字体、引文居中、留白拉满 |
+| **人物/访谈** | "专访"/"对话"/"人物"/"故事"/"经历" | Editorial | 沙丘 or 森林墨 | 人物特写、问答版式、引言突出 |
+| **数据/研究** | "研究"/"报告"/"调查"/"数据"/"统计" | Swiss | IKB Blue | 图表密集、数据标签、灰阶层级 |
+| **观点/评论** | "我认为"/"其实"/"真相"/"误区"/"反思" | Editorial | 墨水经典 | 金句放大、判断卡、认知纠偏 |
+| **教程/指南** | "教程"/"指南"/"如何"/"入门"/"从零开始" | Swiss | Lemon Green | 步骤流程、截图美化、编号清单 |
+
+**Rule**: Category detection is a SILENT suggestion. If the user's Q1 answer contradicts the detected category, user's explicit answer wins.
+
+**User-facing output** (only in non-Master mode):
+"我检测到这篇文章属于 [品类]，推荐 [模式] 风格。你也可以在下面3个问题中调整。"
+
 ### The 3 Questions (User-Facing)
 
 ```
