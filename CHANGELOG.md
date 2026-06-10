@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.3.0] - 2026-06-10
+
+### Added — guizang Methodology Absorption (5 blind spots fixed)
+
+Inspired by op7418's methodology article: "做杂志，不做网页" / "限制不是阻碍，是底线" / "Skill 是一个产品"
+
+- **Category Detection**: Silent pre-Q1 content category identification (10 categories: 深度观察/科技产品/人文文化/职场干货/旅行生活/读书笔记/人物访谈/数据研究/观点评论/教程指南). Each category maps to default Mode + Palette + Key Visual Trait. User's explicit Q1 answer overrides detection.
+- **Screenshot Styling**: Device frame components (macOS window / iOS device / Browser chrome), material backgrounds (格纸/点阵/暖白/深色), mode-specific shadow & radius rules, screenshot priority chain
+- **Out of Scope declaration**: 6 explicit boundaries — full article typesetting, video, pure image editing, fan content, hard-sell advertising, tutorials >15 cards. "A skill that claims to do everything usually does nothing well."
+- **Adaptive Font Size Rules**: Title length → size/weight/line-clamp mapping (Short ≤6 chars → 56-72px/200-400; Extended 25+ → 22-28px/500/3 lines). Dynamic adjustment: never overflow, minimum readable sizes, number emphasis, CJK line-break, line-height scaling. Includes React utility function `getTitleStyle()`.
+- **Design Decision "Why" Explanations**: Added rationale to "The Larger, The Lighter" (100 years of magazine design validation) and "Aesthetic Guardrails" (70+ years of Swiss Typographic Style practice, 10 curated palettes validated across hundreds of designs)
+
+### Changed
+- Version bumped from 5.2.0 to 5.3.0
+- multi-illustration.md Step C: added Category Detection before Q1
+- image-sources.md: added Screenshot Styling section
+- react-output-spec.md: added Adaptive Font Size Rules section
+- aesthetics-guide.md: added "Why it works" / "Why restriction works" rationale blocks
+- SKILL.md: added Out of Scope section before Mode Detection
+
 ## [5.2.0] - 2026-06-10
 
 ### Added — guizang-skill Absorption (6 elements) + Image Sources
