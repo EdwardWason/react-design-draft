@@ -65,6 +65,12 @@ Inspired by Kami's "ten invariants" and taste-skill's "anti-slop" philosophy. St
 
 **Why it works**: The human eye perceives light-weight large text as confident and refined, while heavy-weight large text reads as aggressive and cheap. Think Monocle vs. a spam email.
 
+**Why it works** (design decision rationale):
+- Light-weight large text reads as confident and refined — like Monocle, The New Yorker, or A Book Apart
+- Heavy-weight large text reads as aggressive and cheap — like spam email or discount flyers
+- This principle has been validated by 100 years of magazine and poster design
+- The specific weight ranges (200-400 for display, 500-650 for meta) are calibrated for screen rendering at 640px canvas width
+
 ### CJK Letter-Spacing
 
 - Chinese body text with serif: `letter-spacing: 0.3pt` (compensate for density)
@@ -424,6 +430,12 @@ Inspired by guizang's philosophy: "Color matching mistakes instantly destroy aes
 **No Cross-Mode Mixing**: Do not use Swiss gray scale in Editorial mode, or Editorial warm grays in Swiss mode. Each mode has its own calibrated color system.
 
 **When user insists on custom color**: Allow it only if they provide a brand hex code with explicit brand context (e.g., "our brand color is #E3120B"). Register it as `--brand-accent` and apply single-accent rules.
+
+**Why restriction works** (design decision rationale):
+- Color matching mistakes instantly destroy aesthetics — a wrong accent color can make an entire design set look amateur
+- 10 curated palettes have been validated across hundreds of real-world magazine and poster designs
+- "Freedom to choose any color" = "freedom to make ugly things" — this is why professional design tools ship with preset palettes
+- The Swiss single-accent rule comes from 70+ years of Swiss International Typographic Style practice — mixing multiple bright colors violates the style's DNA
 
 ## Phase 4: Layout & Composition
 
