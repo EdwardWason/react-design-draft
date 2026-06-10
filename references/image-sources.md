@@ -87,3 +87,39 @@ When user has no images:
 - Pexels/Unsplash: No attribution required, but recommended in image caption
 - Wallhaven: Check individual license; add attribution when required
 - User's images: Credit as "图片来源：用户提供"
+
+## Screenshot Styling (截图美化)
+
+For product reviews, tutorials, and technical content, screenshots are more useful than stock photos. Apply device-frame styling to make raw screenshots look like professional product imagery.
+
+### Device Frame Components
+
+| Frame Type | Use Case | CSS Approach |
+|-----------|---------|-------------|
+| **macOS window** | Desktop app screenshots | Top bar with traffic lights (●●●), title centered, rounded corners 8px |
+| **iOS device** | Mobile app screenshots | Rounded rectangle with notch/dynamic island, home indicator bar |
+| **Browser chrome** | Web app screenshots | Tab bar + address bar + bookmark bar, content area below |
+
+### Material Backgrounds (材质背景)
+
+Screenshots should NOT float on white. Place them on a textured background:
+
+| Background | CSS | Best For |
+|-----------|-----|----------|
+| **格纸** | `background-image: linear-gradient(#e8e5de 1px, transparent 1px), linear-gradient(90deg, #e8e5de 1px, transparent 1px); background-size: 20px 20px;` | Editorial mode, tutorial cards |
+| **点阵** | `background-image: radial-gradient(circle, #d4d4d2 1px, transparent 1px); background-size: 16px 16px;` | Swiss mode, tech product |
+| **暖白** | `background: #f5f4ed;` | Both modes, minimal style |
+| **深色** | `background: #1a1a1e;` | Swiss mode, dark theme pages |
+
+### Shadow & Radius Rules
+
+| Mode | Shadow | Border Radius |
+|------|--------|--------------|
+| **Editorial** | `0 4px 24px rgba(0,0,0,0.12)` | 8px (window), 16px (device) |
+| **Swiss** | `0 2px 12px rgba(0,0,0,0.08)` | 4px (window), 12px (device) |
+
+### Screenshot Priority
+
+1. User-provided screenshots → apply device frame + material background
+2. No screenshots available → use stock photos from Pexels/Unsplash
+3. Neither available → use pure CSS/SVG layout (no image needed)
