@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.2.0] - 2026-06-10
+
+### Added — guizang-skill Absorption (6 elements) + Image Sources
+
+- **"The Larger, The Lighter" typography rule**: Large text (56px+) uses weight 200-400, small text (10-12px) uses weight 500-650. A 56px+ title at weight 600+ = instant downgrade to "generic landing page"
+- **Dual Style System (Editorial vs Swiss)**: Two complete visual stances — Editorial Magazine (serif + warm paper + atmosphere) vs Swiss International (sans + gray-white + one high-saturation accent). Pick by editorial intent, not content type
+  - 4 Swiss Accent Palettes: IKB Blue / Lemon Yellow / Lemon Green / Safety Orange
+  - Swiss Gray Scale: 5-step calibrated premium gray (#fafaf8 → #0a0a0a)
+  - Style Identity Test: 4-rule Swiss test + 3-rule Editorial test — must pass before delivery
+- **Aesthetic Guardrails**: "Protect beauty over freedom" — Swiss mode limited to 4 accent palettes (no custom hex), Editorial mode limited to warm palettes, no cross-mode color mixing
+- **Visual Rhythm Planning**: hero/dark/light/accent theme classes across illustrations. Hard rules: no 3+ consecutive same theme, 6+ illustrations must have ≥1 hero + ≥1 dark + ≥1 light
+- **Swiss Gray Scale**: Cross-accent unified premium gray system (warm white #fafaf8, not pure white #fff)
+- **Image-Text Conflict Protection**: Quiet zone test, subject mapping, object-position discipline, thumbnail test, no full-canvas falloffs
+- **Image Sources**: Free stock library integration — Pexels (general), Unsplash (editorial), Wallhaven (cinematic). Mode-based priority, user images first
+  - New reference file: `references/image-sources.md`
+
+### Changed
+- Version bumped from 5.1.0 to 5.2.0
+- SKILL.md Rules expanded from 21 to 27
+- aesthetics-guide.md: added Phase 0.5 (Dual Style System), The Larger The Lighter rule, Aesthetic Guardrails, Image-Text Conflict Bans
+- multi-illustration.md Step C: Q1 answers now map to Editorial/Swiss modes; added Visual Rhythm Planning section
+- Step C Answer→Style Mapping: added Mode column (Editorial/Swiss)
+
 ## [5.1.0] - 2026-06-09
 
 ### Added — md2wechat-skill Absorption (6 elements)
