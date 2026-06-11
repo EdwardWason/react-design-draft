@@ -1,35 +1,64 @@
-# React Design Draft Generator v5.3.0
+# React Design Draft Generator · 内容 → React 设计稿四件套
 
-> 从内容生成信息密度高、审美在线的 React 设计稿四件套
+🌍 English version: [README.en.md](README.en.md)
 
-[![版本](https://img.shields.io/badge/version-5.3.0-blue)](https://github.com/EdwardWason/react-design-draft)
-[![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
-[![ClawHub](https://img.shields.io/badge/ClawHub-react--design--draft-orange)](https://clawhub.ai/skills/react-design-draft)
+[![Stars](https://img.shields.io/github/stars/EdwardWason/react-design-draft?style=flat-square)](https://github.com/EdwardWason/react-design-draft)
+[![许可证](https://img.shields.io/badge/license-MIT--0-green?style=flat-square)](LICENSE)
+[![ClawHub](https://img.shields.io/badge/ClawHub-react--design--draft-orange?style=flat-square)](https://clawhub.ai/skills/react-design-draft)
+[![Skill](https://img.shields.io/badge/Claude%20Code-Skill-blue?style=flat-square)](SKILL.md)
 
-## 功能
+[看效果](#效果) · [装上就能用](#30-秒开始) · [核心机制](#核心机制) · [已知限制](#已知限制) · [License](#license)
 
-- **三维组合系统**：25种布局 × 23种风格 × 12种配色，自动匹配内容结构
-- **React 四件套输出**：design-tokens.css + data.js + components/*.jsx + App.jsx
-- **信息密度量化**：5维度25分制评分，≥16分及格，10条反模式红线
-- **前置适配建议**：生成前强制展示风格/布局/比例推荐，用户确认后才生成
-- **生成后编辑指南**：文件树 + 快捷编辑地图 + 组件层级树，体现 React 可定向修改优势
-- **本地字体优先**：7种字体预设 + 11个本地CJK字体注册表，Local-first 策略
-- **29个快捷预设**：知识卡片、对比分析、信息图、纸墨风等一键触发
-- **Kami 纸墨风格**：10条不变量规则，仓耳今楷02 + 羊皮纸配色
+---
 
-## 快速开始
+_「把你模糊的"好看"，翻译成精确的设计参数。」_
+
+---
+
+**React Design Draft Generator** 不是又一个 AI 配图工具，是从内容到视觉的完整设计系统。它不做单纯的图片生成——它产出一套**可独立编辑、可自由重构、可版本控制**的 React 设计稿。每一个像素都有 CSS 变量控制，每一个元素都有独立的组件文件。
+
+---
+
+## 效果
+
+- 🎨 **三维组合系统**：25 种布局 × 23 种风格 × 12 种配色，内容驱动自动匹配
+- 📐 **React 四件套输出**：design-tokens.css + data.js + components/*.jsx + App.jsx，每个元素独立可编辑
+- 📊 **信息密度量化**：5 维度 25 分制评分，10 条反模式红线，≥16 分才及格
+- 🎯 **双风格系统**：电子杂志风（衬线 + 暖色）vs 瑞士国际主义（无衬线 + 灰白 + 单高饱和锚点色）——一份稿子只能选一套，不能混用
+- 🖼 **多图模式**：一篇长文自动提取可视化单元，批量生成封面 + 金句卡 + 信息图 + 逻辑链，密度门控确保每张配图都值得占据用户屏幕
+- 🤖 **大师模式**：说"大师推荐"或"你定"，一键跳过所有确认点，全自动化从解析到生成
+- 🔒 **审美护栏**：保护美学比给自由更重要——瑞士风锁定 4 套锚点色，杂志风锁定暖色体系，不允许自定义 hex
+- 📝 **生成后编辑指南**：文件树 + 快捷编辑地图 + 组件层级树，体现 React 可定向修改的核心优势
+- 🔤 **The Larger, The Lighter**：大字用轻量（200-400），小字用中量（500-650）——这是 100 年杂志排印验证的铁律
+
+## 适合 / 不适合
+
+✅ **适合**
+- 把你的文章/数据/观点做成高密度信息图或知识卡片
+- 一篇长文需要全套配图（封面 + 正文配图 + 金句卡）
+- 需要可编辑、可重构的设计稿（不是"一张死图"）
+- 追求信息密度而非视觉炫技
+- 想做杂志级排版但不懂设计软件
+
+❌ **不适合**
+- 全文排版（用 md2wechat-skill 或 Kami）
+- 视频/动效制作
+- 纯图片编辑（无内容提取或排版需求）
+- 追星粉丝向内容（需要完全不同的视觉语言）
+- 纯促销硬广（违反"内容优先"的设计哲学）
+- 超过 15 张配图的教程（配图不是长教程的最优载体）
+
+## 30 秒开始
 
 ```bash
-# ClawHub 安装
+# ClawHub 安装（推荐）
 clawhub install react-design-draft
 
 # 或手动安装
 git clone https://github.com/EdwardWason/react-design-draft.git
 ```
 
-## 使用方式
-
-在 TRAE / Claude Code / 任何 Agent 平台中，提供内容即可触发：
+在 TRAE / Claude Code / 任何 Agent 平台中，说一句话即可触发：
 
 ```
 帮我把这篇文章做成高密度信息图
@@ -40,8 +69,48 @@ git clone https://github.com/EdwardWason/react-design-draft.git
 ```
 
 ```
-对比分析 A 和 B，生成设计稿
+给这篇长文生成全套配图
 ```
+
+## 常见使用场景
+
+| 场景 | 推荐方式 | 触发词 |
+|------|---------|--------|
+| 想做信息图但不懂设计 | 大师模式 | "大师推荐，把这篇文章做成信息图" |
+| 公众号长文配图 | 多图模式 | "给这篇文章生成全套配图" |
+| 单张知识卡片 | 单稿模式 | "把这个要点做成知识卡片" |
+| 对比分析 | 单稿模式 | "对比 A 和 B，生成设计稿" |
+| 纸墨风高级感 | 指定风格 | "用纸墨风做一份策略报告设计稿" |
+| 瑞士风极简排版 | 指定风格 | "用瑞士风给这页数据做成设计稿" |
+
+## 使用方法
+
+### 三种模式
+
+```
+用户输入
+    │
+    ├── 说"大师推荐"/"你定"/"直接来"?
+    │   → Master Mode（全自动化）
+    │
+    ├── 包含"多图"/"配图"/"全套"/"文章配图"?
+    │   → Multi-Illustration Mode（批量配图）
+    │
+    └── 其他?
+        → Single Draft Mode（单稿交互）
+```
+
+### 工作流
+
+```
+内容输入 → 品牌配置 → 解析匹配 → 确认建议 → 生成四件套 → 编辑指南
+```
+
+1. **品牌配置**：四层优先级（用户指定 → 品牌 DNA 自动检测 → 个人品牌档案 → 自动匹配）
+2. **解析匹配**：解析内容结构，自动匹配 Layout × Style × Palette
+3. **确认建议**：用 3 个简单问题（调性→印象→配色）替代 23 种风格 × 12 种配色的复杂选择
+4. **生成四件套**：design-tokens.css + data.js + components/*.jsx + App.jsx
+5. **编辑指南**：文件树 + 快捷编辑地图 + 组件层级树
 
 ### 关键词触发
 
@@ -54,102 +123,142 @@ git clone https://github.com/EdwardWason/react-design-draft.git
 | 高密度信息大图 | dense-info |
 | 杂志风 / 排版 | magazine |
 
-### 自定义覆盖
+## 示例请求
 
 ```
-用赛博朋克风格做知识卡片 → --style cyberpunk-neon
-高密度信息图，用暗色方案 → --palette dark
+用户: "帮我把这篇深度学习综述做成信息图"
+
+Agent: 已解析出 8 个可视化单元，推荐：
+- 封面：杂志风 — 暖灰底 + 衬线大字
+- 核心概念图：瑞士风 — IKB 蓝锚点
+- 对比表：杂志风 — 羊皮纸底
+确认生成？
 ```
 
-## 执行流程
+```
+用户: "大师推荐，给这篇产品复盘文章生成全套配图"
+
+Agent: [自动解析 → 自动匹配 → 批量生成 → 输出配图地图]
+共生成 6 张配图：封面 + 3 张信息图 + 金句卡 + 封底
+```
+
+## 目录结构
 
 ```
-内容输入 → Step 1: Parse & Match → Step 2: Confirm & Advise → Step 3: Generate → Step 4: Post-Generation Guide
+react-design-draft/
+├── SKILL.md                              # Agent 工作流定义
+├── README.md                             # 中文文档
+├── README.en.md                          # English docs
+├── CHANGELOG.md                          # 版本记录（v3.0.0 → v5.3.0）
+├── LICENSE                               # MIT-0
+├── .claude-plugin/
+│   └── plugin.json                       # Claude Code 元数据
+└── references/                           # 参考文档
+    ├── content-layout-mapping.md         # 三维组合系统 + 25 种布局
+    ├── aesthetics-guide.md               # 23 种风格 + 12 种配色 + 审美哲学
+    ├── density-standards.md              # 5 维度评分 + 48 条反模式红线
+    ├── react-output-spec.md              # React 四件套输出规范
+    ├── style-presets.md                  # 29 个快捷预设 + 关键词映射
+    ├── chart-system.md                   # 14 种图表系统
+    ├── brand-profile.md                  # 四层品牌配置
+    ├── multi-illustration.md             # 多图模式完整规范
+    └── image-sources.md                  # 图片来源 + 截图样式
 ```
 
-1. **Parse & Match**：解析内容结构，自动匹配 Layout × Style × Palette
-2. **Confirm & Advise**：展示推荐方案 + 适配建议，等待用户确认
-3. **Generate**：输出 React 四件套（design-tokens.css / data.js / components/*.jsx / App.jsx）
-4. **Post-Generation Guide**：输出编辑指南（文件树 + 快捷编辑 + 组件层级）
+## 核心机制
 
-## 配置
+### 三维组合系统
 
-| 配置项 | 默认值 | 说明 |
-|--------|--------|------|
-| Layout | 自动匹配 | 25种布局模式 |
-| Style | 自动匹配 | 23种视觉风格 |
-| Palette | 自动匹配 | 12种配色方案 |
-| Density Threshold | 16/25 | 最低信息密度分数 |
-| Font Strategy | local-first | 本地字体优先，Web字体回退 |
+| 维度 | 选项数 | 示例 |
+|------|--------|------|
+| **布局** | 25 种 | 枚举、对比、流程、数据、层级、时间线、混合 |
+| **风格** | 23 种 | 专业/杂志/手作/数字/活泼/优雅，6 大类 |
+| **配色** | 12 种 | kami-parchment、暗色、品牌色等 |
 
-## 文档
+三个维度共 5,086 种组合，由内容结构自动驱动匹配，用户无需手动选择。
 
-| 文档 | 说明 |
-|------|------|
-| [内容布局映射](references/content-layout-mapping.md) | 三维组合系统 + 25种布局 + 关键词映射 |
-| [美学指南](references/aesthetics-guide.md) | 23种风格 + 12种配色 + 7种字体预设 + 反模式 |
-| [密度标准](references/density-standards.md) | 5维度评分 + 10条反模式红线 |
-| [输出规范](references/react-output-spec.md) | React四件套规范 + 交互编辑指南 |
-| [风格预设](references/style-presets.md) | 29个快捷预设 + 关键词触发映射 |
+### 双风格体系
 
-## License
+| 维度 | 电子杂志风（Editorial） | 瑞士国际主义（Swiss） |
+|------|------------------------|---------------------|
+| **字体** | 衬线体，锁定 500 | 无衬线体 |
+| **配色** | 暖色体系，羊皮纸底 | 灰白 + 4 套锚点色（IKB / 柠檬黄 / 柠檬绿 / 安全橙） |
+| **排版** | 氛围感，杂志编排 | 网格系统，极简精确 |
+| **灰阶** | 7 级暖灰（禁冷蓝灰） | 5 级校准高级灰 |
 
-MIT-0 © 2026
+### 三大审美约束
+
+- **克制**：品牌色 ≤ 5% 面积，单色原则
+- **呼吸**：whisper shadow、0.5pt 边框、8pt 圆角
+- **温度**：暖灰色系全栈替代冷蓝灰，禁止纯白背景
+
+### 信息密度门控
+
+5 维度评分体系（单稿 ≥16/25，多图模式单张 ≥9/15）：
+
+| 维度 | 满分 | 核心问题 |
+|------|------|---------|
+| 数据密度 | 5 | 这张图传达了几个可操作的信息点？ |
+| 视觉层次 | 5 | 读者能在 3 秒内找到视觉起点吗？ |
+| 色彩效率 | 5 | 颜色是在传递信息还是装饰？ |
+| 排版精度 | 5 | 字重、字号、间距是否有语义分工？ |
+| 信息完整性 | 5 | 独立展示时能否被理解？ |
+
+## 主题色预设
+
+### 杂志风（5 套）
+
+| 主题 | 底色 | 品牌色 | 场景 |
+|------|------|--------|------|
+| 羊皮纸 | `#faf9f5` | `#8b4513` | 深度观察、人文文化 |
+| 象牙白 | `#faf8f5` | `#c41e3a` | 科技产品、数据研究 |
+| 暖沙 | `#f7f4ed` | `#2d5a27` | 职场干货、读书笔记 |
+| 墨染 | `#f5f0e8` | `#1a1a2e` | 人物访谈、观点评论 |
+| 和纸 | `#faf7f2` | `#3d5a80` | 旅行生活、教程指南 |
+
+### 瑞士风（4 套）
+
+| 锚点色 | 色值 | 底色 | 场景 |
+|--------|------|------|------|
+| IKB 蓝 | `#0033FF` | `#fafaf8` | 科技、数据、逻辑 |
+| 柠檬黄 | `#E8FF00` | `#fafaf8` | 创意、对比、高亮 |
+| 柠檬绿 | `#00FF41` | `#fafaf8` | 增长、正向、自然 |
+| 安全橙 | `#FF5F00` | `#fafaf8` | 警示、风险、高关注 |
+
+## 已知限制
+
+- **不是全文排版工具**：React 设计稿适合"一张图讲一个点"，不擅长处理 3000 字以上的连续文本排版
+- **不是生产级 React 应用**：输出的四件套适合本地预览和截图，不是可部署的生产代码
+- **需要 Agent 平台**：本 Skill 本身不带 GUI，需要在 TRAE / Claude Code / Codex 等 Agent 环境中运行
+- **字体依赖本地环境**：Local-first 字体策略意味着如果本地没有安装指定字体，会回退到 Web 字体，效果可能有差异
+- **新手学习曲线**：虽然大师模式零门槛，但如果要深度定制（编辑 React 组件），需要基本的 React/CSS 知识
+
+## 核心设计原则
+
+1. **内容驱动，不是模板驱动**：布局服务于内容结构，不是把内容塞进固定模板
+2. **每一个像素都有理由**：禁止纯装饰元素，每个视觉选择必须承载信息或用处
+3. **保护美学比给自由更重要**：限制配色系统，锁定排版规则，防的是"随便调一下"导致的审美崩坏
+4. **React 是手段不是目的**：选 React 是因为它的组件化和可编辑性，不是因为它是前端最佳实践
+5. **信息密度是硬通货**：在没有版号审批、没有印刷成本的数字阅读时代，密度才是真正的奢侈
+
+## FAQ
+
+**Q: 为什么是 React 而不是 HTML？**
+A: React 四件套（tokens + data + components + App）天然支持数据驱动、组件复用和定向修改。改一个数字不需要找全文件的 className，改一个组件不需要重写整个页面。
+
+**Q: 我能直接用生成的代码部署上线吗？**
+A: 不建议。输出的设计稿是"可预览的视觉草稿"，适合截图和沟通确认。生产环境部署需要额外的前端工程化处理。
+
+**Q: 瑞士风和杂志风怎么选？**
+A: 内容的"调性"决定风格——理性、数据、逻辑感强的用瑞士风；感性、叙事、氛围感强的用杂志风。不确定时就问自己：这个话题更适合《连线》还是《经济学人》的排版？
+
+**Q: 我改了设计稿的 CSS，会影响下次生成吗？**
+A: 不会。每次生成都是独立的，不会读取你上次的修改。如果想固定某些风格参数，用品牌配置（`~/.config/react-design-draft/brand.md`）来持久化。
+
+**Q: 多图模式的配图数量怎么决定？**
+A: 由文章内容的可视化单元数量决定，不是固定模板。密度门控（≥9/15）确保每张配图都值得占据屏幕空间。
 
 ---
-
-# React Design Draft Generator v5.3.0
-
-> Generate information-dense, visually refined React design drafts (4-piece set) from content
-
-[![Version](https://img.shields.io/badge/version-4.0.0-blue)](https://github.com/EdwardWason/react-design-draft)
-[![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
-[![ClawHub](https://img.shields.io/badge/ClawHub-react--design--draft-orange)](https://clawhub.ai/skills/react-design-draft)
-
-## Features
-
-- **Three-dimension system**: 25 layouts × 23 styles × 12 palettes, auto-matched to content
-- **React 4-piece output**: design-tokens.css + data.js + components/*.jsx + App.jsx
-- **Density quantification**: 5-dimension 25-point scoring, ≥16 pass, 10 anti-pattern red lines
-- **Pre-generation consultation**: Mandatory style/layout/ratio recommendation before generating
-- **Post-generation edit guide**: File tree + quick edit map + component hierarchy tree
-- **Local-first fonts**: 7 font presets + 11 local CJK font registry
-- **29 quick presets**: Knowledge card, comparison, infographic, Kami editorial, etc.
-- **Kami editorial style**: 10 invariants, TsangerJinKai02 + parchment palette
-
-## Quick Start
-
-```bash
-clawhub install react-design-draft
-```
-
-## Usage
-
-Provide content in any Agent platform:
-
-```
-Turn this article into a high-density infographic
-```
-
-```
-Create a knowledge card in Kami editorial style
-```
-
-## Execution Flow
-
-```
-Content → Step 1: Parse & Match → Step 2: Confirm & Advise → Step 3: Generate → Step 4: Post-Generation Guide
-```
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Content Layout Mapping](references/content-layout-mapping.md) | Three-dimension system + 25 layouts + keyword mapping |
-| [Aesthetics Guide](references/aesthetics-guide.md) | 23 styles + 12 palettes + 7 font presets + anti-patterns |
-| [Density Standards](references/density-standards.md) | 5-dimension scoring + 10 anti-pattern red lines |
-| [React Output Spec](references/react-output-spec.md) | React 4-piece spec + interactive edit guide |
-| [Style Presets](references/style-presets.md) | 29 quick presets + keyword trigger mapping |
 
 ## License
 
